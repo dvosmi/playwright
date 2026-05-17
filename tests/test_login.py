@@ -1,25 +1,32 @@
+import pytest
+
 from page_object.login_page import LoginPage
-from page_object.home_page import HomePage
+from page_object.header_menu import HeaderMenu
+from faker import Faker
 
-from playwright.sync_api import sync_playwright, Page, expect
+from playwright.sync_api import Page
+
+URL_HOME_PAGE = 'http://144.31.139.115:5000'
+
+fake_eu = Faker('en_US')
 
 
-def test_login_page(login_data):
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)
-        page = browser.new_page()
-        page.goto('http://144.31.139.115:5000', wait_until='load')
+@pytest.mark.parametrize('username, password', [(fake_eu.user_name(), fake_eu.password()), ])
+def test_login_page(p_and_browser: Page, username: str, password: str):
+    page = p_and_browser
 
-        home_page = HomePage(page)
+    page.goto(URL_HOME_PAGE)
 
-        home_page.redirect_login_page()
+    header_menu = HeaderMenu(page)
 
-        login_page = LoginPage(page)
+    header_menu.redirect_login_page()
 
-        login_page.login(*login_data)
+    login_page = LoginPage(page)
 
-        assert login_page.check_submit_spinner, 'check loader visible'
+    login_page.login(username, password)
 
-        login_page.wait_for_loading()
+    assert login_page.is_submit_spinner, 'check loader visible'
 
-        assert login_page.get_login_error_text() == 'Invalid login or password.', 'check error text'
+    login_page.wait_for_loading()
+
+    assert login_page.get_login_error_text() == 'Invalid login or password.', f'ER: Invalid login or password. AR: {login_page.get_login_error_text()}'

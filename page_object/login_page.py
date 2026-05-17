@@ -15,7 +15,7 @@ class LoginPage(HeaderMenu):
 
         self.submit_spinner = page.get_by_test_id("login-submit-spinner")
 
-    def check_submit_spinner(self):
+    def is_submit_spinner(self):
         return self.submit_spinner.is_visible()
 
     def wait_for_loading(self):
@@ -26,12 +26,6 @@ class LoginPage(HeaderMenu):
         self.password_input.fill(password)
         self.submit_btn.click()
 
-    def get_login_title(self):
-        self.login_title.text_content()
-
-    def get_username_label(self):
-        self.label_username.text_content()
-
     def is_login_input_edit(self):
         self.login_input.is_editable()
 
@@ -40,9 +34,6 @@ class LoginPage(HeaderMenu):
 
     def is_submit_btn_enable(self):
         self.submit_btn.is_enabled()
-
-    def get_submit_btn(self):
-        return self.submit_btn
 
     def is_login_error_visible(self):
         self.login_error_message.is_visible()

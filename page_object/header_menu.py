@@ -1,4 +1,4 @@
-from playwright.sync_api import Page, expect
+from playwright.sync_api import Page
 
 class HeaderMenu:
 
@@ -9,5 +9,3 @@ class HeaderMenu:
 
     def redirect_login_page(self):
         self.login_btn.click()
-        self.page.wait_for_url("**/login")
-
