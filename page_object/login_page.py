@@ -1,6 +1,7 @@
 from playwright.sync_api import Page, expect
 from page_object.header_menu import HeaderMenu
 
+
 class LoginPage(HeaderMenu):
 
     def __init__(self, page: Page):
@@ -15,16 +16,12 @@ class LoginPage(HeaderMenu):
 
         self.submit_spinner = page.get_by_test_id("login-submit-spinner")
 
-    def is_submit_spinner(self):
-        return self.submit_spinner.is_visible()
-
-    def wait_for_loading(self):
-        self.submit_spinner.wait_for(state='detached')
-
     def login(self, username: str, password: str):
         self.login_input.fill(username)
         self.password_input.fill(password)
         self.submit_btn.click()
+        self.submit_spinner.wait_for(state='visible')
+        self.submit_spinner.wait_for(state='detached')
 
     def is_login_input_edit(self):
         self.login_input.is_editable()
