@@ -26,3 +26,5 @@ def test_login_page(p_and_browser: Page, username: str, password: str):
     login_page.login(username, password)
 
     assert login_page.get_login_error_text() == 'Invalid login or password.', f'ER: Invalid login or password. AR: {login_page.get_login_error_text()}'
+
+#Проверка Gitа
