@@ -1,0 +1,16 @@
+venv/
+.env
+
+dist/
+*.egg-info
+
+.coverage
+*.py,cover
+.cache/
+
+__pycache__/
+*.py[cod]
+
+.git/
+
+.idea/
