@@ -1,3 +1,5 @@
+import re
+
 from playwright.sync_api import Page
 from page_object.header_menu import HeaderMenu
 
@@ -23,6 +25,7 @@ class SearchResults(HeaderMenu):
         results = []
         for i in range(1, n + 1):
             results.append(
-                self.page.locator(f"(//article//div[contains(@class, 'article-price')])[{i}]") \
+                self.page.locator(f"(//div[contains(@data-testid, 'search-result-price')])[{i}]") \
                     .get_attribute('data-price'))
+
         return results

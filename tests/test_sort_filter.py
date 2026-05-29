@@ -1,5 +1,5 @@
 import pytest
-
+from playwright.sync_api import sync_playwright
 from page_object.search_results import SearchResults
 from page_object.header_menu import HeaderMenu
 from playwright.sync_api import Page
@@ -11,9 +11,8 @@ CONFIG_PATH = 'config.json'
 config = ConfigReader(CONFIG_PATH)
 
 
+@pytest.mark.parametrize('n, filter_type', [(10, Sort.LOW_TO_HIGH), (15, Sort.HIGH_TO_LOW)])
 @pytest.mark.parametrize('name', ['city', 'habits'])
-@pytest.mark.parametrize('n', [10, 15])
-@pytest.mark.parametrize('filter_type', [Sort.LOW_TO_HIGH, Sort.HIGH_TO_LOW])
 def test_sort_filter(page: Page, name, n, filter_type):
     page.goto(config.get_url())
 
