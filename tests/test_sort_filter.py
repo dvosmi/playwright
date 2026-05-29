@@ -27,7 +27,7 @@ def test_sort_filter(page: Page, name, n, filter_type):
 
     results = search_result.get_search_results(n)
 
-    if filter_type == 'Price: low to high':
+    if filter_type == Sort.LOW_TO_HIGH:
         assert (results == sorted(results)), f'Name:{name}; n: {n}; filter_type: {filter_type}'
-    elif filter_type == 'Price: high to low':
+    elif filter_type == Sort.HIGH_TO_LOW:
         assert (results == sorted(results, reverse=True)), f'Name:{name}; n: {n}; filter_type: {filter_type}'

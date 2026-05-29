@@ -4,14 +4,16 @@ from playwright.sync_api import Page
 from page_object.header_menu import HeaderMenu
 
 
-class SearchResults(HeaderMenu):
+class SearchResults:
 
     def __init__(self, page: Page):
-        super().__init__(page)
-
+        self.page = page
+        self.header = HeaderMenu(page)
         self.sort_picker = page.get_by_test_id('filter-sort')
         self.apply_btn = page.get_by_test_id('apply-filters-button')
         self.loader = page.get_by_test_id('results-loader-svg')
+        self.result_locator = page.locator(f"(//div[contains(@data-testid, 'search-result-price')])")
+
 
     def wait_loader(self):
         self.loader.wait_for(state='visible')
@@ -24,8 +26,7 @@ class SearchResults(HeaderMenu):
     def get_search_results(self, n: int):
         results = []
         for i in range(1, n + 1):
-            results.append(
-                self.page.locator(f"(//div[contains(@data-testid, 'search-result-price')])[{i}]") \
-                    .get_attribute('data-price'))
+            results.append(self.result_locator.nth(n).get_attribute('data-price'))
 
+        print(results)
         return results
