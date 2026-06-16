@@ -13,9 +13,5 @@ class Windows:
         )
         self.action = PageAction(page)
 
-    def open_new_page(self):
-        with self.action.expect_new_page() as new_page_info:
-            self.click_here_link.click()
-        new_page = new_page_info.value
-        new_page.wait_for_load_state('load')
-        return new_page
+    def click_link(self) -> None:
+        self.click_here_link.click()

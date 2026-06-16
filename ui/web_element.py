@@ -59,3 +59,7 @@ class WebElement:
     def set_input_files(self, file: str) -> None:
         logger.info(f'{self}: upload file {file}')
         return self.locator.set_input_files(file)
+
+    def evaluate(self, command) -> None:
+        logger.info(f'{self}: evaluate {command}')
+        self.locator.evaluate(f'{command}')

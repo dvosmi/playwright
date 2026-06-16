@@ -3,6 +3,8 @@ from playwright.sync_api import Page
 from ui.web_element import WebElement
 from ui.page_action import PageAction
 
+import random
+
 class HorizontalSlider:
     def __init__(self, page: Page):
         self.page = page
@@ -18,9 +20,29 @@ class HorizontalSlider:
 
     def press_slider_right(self, random_number: int) -> None:
         self.slider.focus()
+        random_value = random_number // 5
 
-        for _ in range(random_number):
+        for _ in range(random_value):
             self.action.keyboard_press('ArrowRight')
 
     def get_slider_value(self) -> float:
         return float(self.slider_number.get_text_content())
+
+    def get_min_value(self) -> float:
+        min_value = float(self.slider.get_attribute('min'))
+        return min_value
+
+    def get_max_value(self) -> float:
+        max_value = float(self.slider.get_attribute('max'))
+        return max_value
+
+    def get_step_value(self) -> float:
+        step_value = float(self.slider.get_attribute('step'))
+        return step_value
+
+    def get_random_value(self) -> int:
+        min_value = int(self.get_min_value()*10) + 5
+        max_value = int(self.get_max_value()*10) - 5
+        step_value = int(self.get_step_value()*10)
+        random_value = random.randrange(min_value, max_value, step_value)
+        return random_value

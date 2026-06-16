@@ -78,5 +78,9 @@ class PageAction:
         self.page.reload()
 
     def evaluate(self, command) -> None:
-        logger.info(f'PageAction: ScrollTo')
+        logger.info(f'PageAction: evaluate {command}')
         self.page.evaluate(f'{command}')
+
+    def expect_download(self):
+        logger.info(f'PageAction: expect download')
+        return self.page.expect_download()

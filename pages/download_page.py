@@ -16,26 +16,7 @@ class Download:
         self.action = PageAction(page)
 
     def get_link_text(self, number: int) -> str:
-        return self.links.nth(number - 1).get_text_content()
+        return self.links.nth(number).get_text_content()
 
-    def _get_file_value(self, number: int):
-        with self.page.expect_download() as download_info:
-            self.links.nth(number - 1).click()
-        file_value = download_info.value
-        return file_value
-
-    def get_name_file(self, number: int) -> str:
-        file = self._get_file_value(number)
-        return file.suggested_filename
-
-    def download_file(self, number: int) -> None:
-        file = self._get_file_value(number)
-        file_name = file.suggested_filename
-        file.save_as(file_name)
-
-    def check_download_filename(self, filename: str) -> bool:
-        return Path(filename).is_file()
-
-    def delete_download_file(self, filename: str) -> None:
-        file = Path(filename)
-        file.unlink()
+    def click_nth_link(self, number: int) -> None:
+        self.links.nth(number).click()
