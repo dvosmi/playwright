@@ -3,6 +3,7 @@ from playwright.sync_api import Page
 from ui.multi_web_element import MultiWebElement
 from ui.page_action import PageAction
 
+
 class Hovers:
     def __init__(self, page: Page):
         self.page = page
@@ -22,4 +23,4 @@ class Hovers:
     def generate_content_figures(self):
         for index, element in enumerate(self.figures.all()):
             element.hover()
-            yield self.get_content_nth(index), index+1
+            yield self.get_content_nth(index), index + 1

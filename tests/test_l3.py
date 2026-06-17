@@ -84,9 +84,10 @@ class TestClass:
 
         horizontal_slider.action.goto(config.get_url())
 
-        min_value = int(horizontal_slider.get_min_value() * 10) + 5
-        max_value = int(horizontal_slider.get_max_value() * 10) - 5
         step_value = int(horizontal_slider.get_step_value() * 10)
+        min_value = int(horizontal_slider.get_min_value() * 10) + step_value
+        max_value = int(horizontal_slider.get_max_value() * 10) - step_value
+
         random_number = random.randrange(min_value, max_value, step_value)
 
         horizontal_slider.press_slider_right(random_number)

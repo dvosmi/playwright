@@ -19,13 +19,6 @@ class HorizontalSlider:
         )
         self.action = PageAction(self.page)
 
-    def press_slider_right(self, random_number: int) -> None:
-        self.slider.focus()
-        random_value = random_number // 5
-
-        for _ in range(random_value):
-            self.action.keyboard_press('ArrowRight')
-
     def get_slider_value(self) -> float:
         return float(self.slider_number.get_text_content())
 
@@ -40,3 +33,11 @@ class HorizontalSlider:
     def get_step_value(self) -> float:
         step_value = float(self.slider.get_attribute('step'))
         return step_value
+
+    def press_slider_right(self, random_number: int) -> None:
+        self.slider.focus()
+        step = int(self.get_step_value() * 10)
+        random_value = random_number // step
+
+        for _ in range(random_value):
+            self.action.keyboard_press('ArrowRight')
