@@ -4,6 +4,7 @@ from ui.multi_web_element import MultiWebElement
 from ui.page_action import PageAction
 from ui.web_element import WebElement
 
+# self.jscroll_added.last().evaluate('elem => elem.scrollIntoView()')
 
 class InfiniteScroll:
     def __init__(self, page: Page):
@@ -19,4 +20,5 @@ class InfiniteScroll:
         return self.jscroll_added.count()
 
     def scroll_jscroll(self) -> None:
-        self.jscroll_added.last().evaluate('elem => elem.scrollIntoView()')
+        self.jscroll_added.last().scroll_into_view_if_needed()
+

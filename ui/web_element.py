@@ -63,3 +63,7 @@ class WebElement:
     def evaluate(self, command) -> None:
         logger.info(f'{self}: evaluate {command}')
         self.locator.evaluate(f'{command}')
+
+    def scroll_into_view_if_needed(self) -> None:
+        logger.info(f'{self}: scroll_into_view_if_needed()')
+        self.locator.scroll_into_view_if_needed()

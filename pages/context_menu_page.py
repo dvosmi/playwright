@@ -13,5 +13,4 @@ class ContextMenu:
         self.action = PageAction(page)
 
     def accept_alert(self) -> str:
-        area_click = self.hot_spot.right_click
-        return self.action.accept_alert(area_click)
+        return self.action.accept_alert(self.hot_spot.right_click)

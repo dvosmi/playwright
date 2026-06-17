@@ -1,5 +1,9 @@
+import time
 from pathlib import Path
 import tempfile
+import random
+
+import pytest
 
 from services.config_reader import ConfigReader
 from playwright.sync_api import Page
@@ -79,7 +83,11 @@ class TestClass:
         horizontal_slider = HorizontalSlider(page)
 
         horizontal_slider.action.goto(config.get_url())
-        random_number = horizontal_slider.get_random_value()
+
+        min_value = int(horizontal_slider.get_min_value() * 10) + 5
+        max_value = int(horizontal_slider.get_max_value() * 10) - 5
+        step_value = int(horizontal_slider.get_step_value() * 10)
+        random_number = random.randrange(min_value, max_value, step_value)
 
         horizontal_slider.press_slider_right(random_number)
 
@@ -169,31 +177,34 @@ class TestClass:
 
         dynamic_content.action.goto(config.get_url())
 
-        while True:
-            try:
-                img_match = dynamic_content.check_imgs_match()
-                assert img_match, f'ER: "True". AR: "{img_match}"'
+        for _ in range(100):
+            img_match = dynamic_content.check_imgs_match()
+            if img_match:
                 break
-            except AssertionError:
-                dynamic_content.action.reload_page()
+            dynamic_content.action.reload_page()
+        else:
+            raise AssertionError(f'ER: "2 img match". AR: "{img_match}"')
 
     def test_scroll(self, page: Page):
         CONFIG_PATH = 'tests/data/scroll_data.json'
+        TIMEOUT = 30
         config = ConfigReader(CONFIG_PATH)
 
         scroll = InfiniteScroll(page)
 
         scroll.action.goto(config.get_url())
 
-        while True:
-            try:
-                scroll_count = scroll.check_scroll_count()
-                assert scroll_count >= 10, f'ER: "10". AR: "{scroll_count}"'
-                break
-            except AssertionError:
-                scroll.scroll_jscroll()
+        end_time = time.monotonic() + TIMEOUT
 
-    def test_upload_image(self, page: Page):
+        while time.monotonic() < end_time:
+            if scroll.check_scroll_count() >= 10:
+                break
+
+            scroll.scroll_jscroll()
+        else:
+            raise AssertionError(f'ER: "10". AR: "{TIMEOUT}"')
+
+    def test_upload_image(self, page: Page, tmp_file):
         CONFIG_PATH = 'tests/data/upload_image_data.json'
         config = ConfigReader(CONFIG_PATH)
 
@@ -201,7 +212,6 @@ class TestClass:
 
         upload.action.goto(config.get_url())
 
-        tmp_file = tempfile.NamedTemporaryFile(delete=False)
         tmp_file_path = Path(tmp_file.name)
         tmp_file_name = tmp_file_path.name
 
@@ -212,9 +222,7 @@ class TestClass:
         assert upload_text == 'File Uploaded!', f'ER: "File Uploaded!". AR: "{upload_text}"'
         assert uploaded_file_text == tmp_file_name, f'ER: "{tmp_file_name}". AR: "{uploaded_file_text}"'
 
-        tmp_file.close()
-        tmp_file_path.unlink(missing_ok=True)
-
+    @pytest.mark.parametrize('link_number', [3])
     def test_download(self, page: Page, link_number: int):
         CONFIG_PATH = 'tests/data/download_data.json'
         config = ConfigReader(CONFIG_PATH)
@@ -224,12 +232,12 @@ class TestClass:
         downland.action.goto(config.get_url())
 
         with downland.action.expect_download() as download_info:
-            downland.click_nth_link(link_number-1)
+            downland.click_nth_link(link_number - 1)
         file_value = download_info.value
         file_name = file_value.suggested_filename
         file_value.save_as(file_name)
 
-        link_name = downland.get_link_text(link_number-1)
+        link_name = downland.get_link_text(link_number - 1)
 
         downland_filename = Path(link_name).is_file()
         assert downland_filename, f'ER: "{file_name}". AR: "{downland_filename}"'

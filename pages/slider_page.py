@@ -5,6 +5,7 @@ from ui.page_action import PageAction
 
 import random
 
+
 class HorizontalSlider:
     def __init__(self, page: Page):
         self.page = page
@@ -39,10 +40,3 @@ class HorizontalSlider:
     def get_step_value(self) -> float:
         step_value = float(self.slider.get_attribute('step'))
         return step_value
-
-    def get_random_value(self) -> int:
-        min_value = int(self.get_min_value()*10) + 5
-        max_value = int(self.get_max_value()*10) - 5
-        step_value = int(self.get_step_value()*10)
-        random_value = random.randrange(min_value, max_value, step_value)
-        return random_value

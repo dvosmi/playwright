@@ -1,3 +1,5 @@
+import tempfile
+
 import pytest
 from faker import Faker
 
@@ -29,8 +31,8 @@ def page(browser):
 
 @pytest.fixture(scope='function')
 def page_auth(browser):
-    CONFIG_PATH = 'tests/data/basic_authorization_data.json'
-    config = ConfigReader(CONFIG_PATH)
+    config_path = 'tests/data/basic_authorization_data.json'
+    config = ConfigReader(config_path)
     username, password = config.get_user()
 
     new_page = PageFactory(browser)
@@ -50,6 +52,5 @@ def random_text():
 
 
 @pytest.fixture(scope='function')
-def link_number():
-    link_number = 3
-    yield link_number
+def tmp_file():
+    yield tempfile.NamedTemporaryFile(delete=False)
