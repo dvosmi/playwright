@@ -1,0 +1,4 @@
+playwright~=1.60.0
+pytest~=9.0.3
+Faker~=40.21.0
+typing_extensions~=4.15.0
