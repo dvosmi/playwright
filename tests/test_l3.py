@@ -1,6 +1,5 @@
 import time
 from pathlib import Path
-import tempfile
 import random
 
 import pytest
@@ -24,6 +23,7 @@ from pages.download_page import Download
 
 
 class TestClass:
+
     def test_basic_authorization(self, page_auth: Page) -> None:
         CONFIG_PATH = 'tests/data/basic_authorization_data.json'
         config = ConfigReader(CONFIG_PATH)
@@ -35,6 +35,7 @@ class TestClass:
         content_p_text = basic_auth.get_content_p_text()
         assert content_p_text == 'Congratulations! You must have the proper credentials.', \
             f'ER: "Congratulations! You must have the proper credentials.". AR: "{content_p_text}"'
+
 
     def test_alerts(self, page: Page, random_text: str) -> None:
         CONFIG_PATH = 'tests/data/alerts_data.json'
@@ -64,6 +65,7 @@ class TestClass:
         assert result_js_prompt == f'You entered: {random_text}', \
             f'ER: "You entered: {random_text}". AR: {result_js_prompt}'
 
+
     def test_context_click(self, page: Page) -> None:
         CONFIG_PATH = 'tests/data/context_click_data.json'
         config = ConfigReader(CONFIG_PATH)
@@ -75,6 +77,7 @@ class TestClass:
         context_alert = context_menu.accept_alert()
         assert context_alert == 'You selected a context menu', \
             f'ER: "You selected a context menu". AR: {context_alert}'
+
 
     def test_slider(self, page: Page) -> None:
         CONFIG_PATH = 'tests/data/slider_data.json'
@@ -96,6 +99,7 @@ class TestClass:
         slider_value = horizontal_slider.get_slider_value()
         assert slider_value == expect_value, f'ER: "{slider_value}". AR: "{expect_value}"'
 
+
     def test_hover(self, page: Page) -> None:
         CONFIG_PATH = 'tests/data/hover_data.json'
         config = ConfigReader(CONFIG_PATH)
@@ -106,6 +110,7 @@ class TestClass:
 
         for content, index in hovers.generate_content_figures():
             assert content == f'name: user{index}', f'ER: "user{index}". AR: "{content}"'
+
 
     def test_windows(self, page: Page) -> None:
         CONFIG_PATH = 'tests/data/windows_data.json'
@@ -150,6 +155,7 @@ class TestClass:
 
         assert len(pages) == 1, f'ER: 1. AR: {len(pages)}'
 
+
     def test_frames(self, page: Page):
         CONFIG_PATH = 'tests/data/frames_data.json'
         config = ConfigReader(CONFIG_PATH)
@@ -170,6 +176,7 @@ class TestClass:
         top_middle_text = frames.get_top_middle_body_text()
         assert top_middle_text == 'MIDDLE', f'ER: "RIGHT". AR: "{top_middle_text}"'
 
+
     def test_dynamic_content(self, page: Page):
         CONFIG_PATH = 'tests/data/dynamic_content_data.json'
         config = ConfigReader(CONFIG_PATH)
@@ -185,6 +192,7 @@ class TestClass:
             dynamic_content.action.reload_page()
         else:
             raise AssertionError(f'ER: "2 img match". AR: "{img_match}"')
+
 
     def test_scroll(self, page: Page):
         CONFIG_PATH = 'tests/data/scroll_data.json'
@@ -205,6 +213,7 @@ class TestClass:
         else:
             raise AssertionError(f'ER: "10". AR: "{TIMEOUT}"')
 
+
     def test_upload_image(self, page: Page, tmp_file):
         CONFIG_PATH = 'tests/data/upload_image_data.json'
         config = ConfigReader(CONFIG_PATH)
@@ -222,6 +231,7 @@ class TestClass:
 
         assert upload_text == 'File Uploaded!', f'ER: "File Uploaded!". AR: "{upload_text}"'
         assert uploaded_file_text == tmp_file_name, f'ER: "{tmp_file_name}". AR: "{uploaded_file_text}"'
+
 
     @pytest.mark.parametrize('link_number', [3])
     def test_download(self, page: Page, link_number: int):

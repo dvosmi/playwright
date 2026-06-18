@@ -3,6 +3,7 @@ import sys
 
 LOGGER_NAME = "tests"
 
+
 def setup_logger(name: str = LOGGER_NAME) -> logging.Logger:
     logger = logging.getLogger(name)
     logger.setLevel(logging.DEBUG)
@@ -19,9 +20,9 @@ def setup_logger(name: str = LOGGER_NAME) -> logging.Logger:
     stream_handler.setLevel(logging.DEBUG)
     stream_handler.setFormatter(formatter)
 
-    file_handler = logging.FileHandler(filename=f'ui.log', encoding='utf-8')
+    file_handler = logging.FileHandler(filename=f'logs/ui.log', encoding='utf-8')
     file_handler.setLevel(logging.INFO)
-    stream_handler.setFormatter(formatter)
+    file_handler.setFormatter(formatter)
 
     logger.addHandler(stream_handler)
     logger.addHandler(file_handler)
