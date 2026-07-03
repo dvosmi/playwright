@@ -1,0 +1,13 @@
+import requests
+
+from services.authentication.helpers.user_helper import BaseHelper
+
+
+class StudentHelper(BaseHelper):
+    ENDPOINT_PREFIX = "/students"
+
+    ROOT_ENDPOINT = f"{ENDPOINT_PREFIX}/"
+
+    def post_students(self, json: dict) -> requests.Response:
+        response = self.api_utils.post(self.ROOT_ENDPOINT, json=json)
+        return response
