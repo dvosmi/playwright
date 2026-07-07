@@ -23,7 +23,7 @@ class TestRegisterContract:
             "password": password
         })
 
-        assert response.status_code == 200, f"Right status code. AR: '{response.status_code}', ER: '{200}'"
+        assert response.status_code == 200, f"Wrong status code. AR: '{response.status_code}', ER: '{200}'"
 
     def test_validation_login_wrong(self, auth_api_utils_anonym):
         auth_helper = AuthorizationHelper(api_utils=auth_api_utils_anonym)

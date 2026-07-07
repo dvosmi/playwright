@@ -1,8 +1,5 @@
-from pydantic import BaseModel, ConfigDict
+from services.general.models.base_group import BaseGroup
 
 
-class GroupResponse(BaseModel):
-    model_config = ConfigDict(extra="forbid")
-
-    name: str
+class GroupResponse(BaseGroup):
     id: int

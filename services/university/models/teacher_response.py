@@ -1,20 +1,5 @@
-from enum import StrEnum
-
-from pydantic import BaseModel, ConfigDict
+from services.general.models.base_teacher import BaseTeacher
 
 
-class SubjectEnum(StrEnum):
-    MATHEMATICS = "Mathematics"
-    PHYSICS = "Physics"
-    HISTORY = "History"
-    BIOLOGY = "Biology"
-    GEOGRAPHY = "Geography"
-
-
-class TeacherResponse(BaseModel):
-    model_config = ConfigDict(extra="forbid")
-
-    first_name: str
-    last_name: str
-    subject: SubjectEnum
+class TeacherResponse(BaseTeacher):
     id: int

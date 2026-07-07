@@ -1,20 +1,5 @@
-from pydantic import BaseModel, ConfigDict, EmailStr
-from enum import StrEnum
+from services.general.models.base_student import BaseStudent
 
 
-class DegreeEnum(StrEnum):
-    ASSOCIATE = "Associate"
-    BACHELOR = "Bachelor"
-    MASTER = "Master"
-    DOCTORATE = "Doctorate"
-
-
-class StudentRequest(BaseModel):
-    model_config = ConfigDict(extra="forbid")
-
-    first_name: str
-    last_name: str
-    email: EmailStr
-    degree: DegreeEnum
-    phone: str
-    group_id: int
+class StudentRequest(BaseStudent):
+    pass

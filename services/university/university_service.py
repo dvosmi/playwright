@@ -51,11 +51,3 @@ class UniversityService(BaseService):
         query = query_params.model_dump(exclude_none=True) if query_params else None
         response = self.grade_helper.get_grade_stats(query=query)
         return GradeStatisticResponse(**response.json())
-
-    def calculate_expect_grade_stats(self, multi_grades: dict):
-        grade = [g.grade for g in multi_grades]
-        return {
-            "min": min(grade),
-            "max": max(grade),
-            "avg": sum(grade) / len(grade),
-        }

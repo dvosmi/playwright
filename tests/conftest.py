@@ -6,10 +6,13 @@ from faker import Faker
 from logger.logger import Logger
 from services.authentication.models.login_request import LoginRequest
 from services.authentication.models.register_request import RegisterRequest
+from services.general.models.base_grade import GradeEnum
+from services.general.models.base_student import DegreeEnum
+from services.general.models.base_teacher import SubjectEnum
 from services.university.models.grade_request import GradeRequest
 from services.university.models.group_request import GroupRequest
-from services.university.models.student_request import StudentRequest, DegreeEnum
-from services.university.models.teacher_request import TeacherRequest, SubjectEnum
+from services.university.models.student_request import StudentRequest
+from services.university.models.teacher_request import TeacherRequest
 from services.university.university_service import UniversityService
 from utils.api_utils import ApiUtils
 from services.authentication.authentication_service import AuthenticationService
@@ -150,7 +153,7 @@ def teacher_factory(universe_service):
 def grade_factory(universe_service):
     def _grade_factory(teacher_id: int, student_id: int):
         Logger.info("### Create grade")
-        grade_value = random.randint(0, 5)
+        grade_value = random.randint(GradeEnum.GRADE_MIN, GradeEnum.GRADE_MAX)
         grade = GradeRequest(teacher_id=teacher_id,
                              student_id=student_id,
                              grade=grade_value)
@@ -165,7 +168,7 @@ def create_multi_grades(universe_service, teacher_response, student_response):
         multi_grades = []
         for _ in range(count):
             Logger.info("### Create grade")
-            grade_value = random.randint(0, 5)
+            grade_value = random.randint(GradeEnum.GRADE_MIN, GradeEnum.GRADE_MAX)
             grade = GradeRequest(teacher_id=teacher_response.id,
                                  student_id=student_response.id,
                                  grade=grade_value)
@@ -173,3 +176,18 @@ def create_multi_grades(universe_service, teacher_response, student_response):
         return multi_grades
 
     return _create_multi_grades
+
+
+@pytest.fixture(scope="function", autouse=False)
+def group_student_teacher_factory(universe_service, group_factory, student_factory, teacher_factory):
+    def _group_student_teacher_factory():
+        teacher = teacher_factory()
+        group = group_factory()
+        student = student_factory(group_id=group.id)
+        return {
+            "teacher": teacher,
+            "group": group,
+            "student": student
+        }
+
+    return _group_student_teacher_factory

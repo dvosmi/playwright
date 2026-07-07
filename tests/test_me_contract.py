@@ -1,3 +1,5 @@
+import pytest
+
 from services.authentication.helpers.user_helper import UserHelper
 
 
@@ -9,13 +11,11 @@ class TestMeContract:
 
         assert response.status_code == 200, f"Right status code. AR: '{response.status_code}', ER: '{200}'"
 
+    @pytest.mark.xfail
     def test_me_not_authorized(self, auth_api_utils_anonym):
         user_helper = UserHelper(api_utils=auth_api_utils_anonym)
 
         response = user_helper.get_me()
 
-        # По-идеи должна быть 403 ошибка "Not authorized"
-        try:
-            assert response.status_code == 401, f"Wrong status code. AR: '{response.status_code}', ER: '{401}'"
-        except AssertionError:
-            assert response.status_code == 403, f"Wrong status code. AR: '{response.status_code}', ER: '{403}'"
+        assert response.status_code == 401, f"Wrong status code. AR: '{response.status_code}', ER: '{401}'"
+

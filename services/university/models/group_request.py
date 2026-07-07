@@ -1,7 +1,5 @@
-from pydantic import BaseModel, ConfigDict
+from services.general.models.base_group import BaseGroup
 
 
-class GroupRequest(BaseModel):
-    model_config = ConfigDict(extra="forbid")
-
-    name: str
+class GroupRequest(BaseGroup):
+    pass
