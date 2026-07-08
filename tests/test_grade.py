@@ -5,8 +5,8 @@ import pytest_check as check
 from logger.logger import Logger
 from services.general.models.base_grade import GradeEnum
 from services.university.models.grade_request import GradeRequest
+from utils.steps.grade_stats_assert import grade_stats_assert
 from utils.steps.grade_stats_calculate import grade_stats_calculate
-from utils.soft_assert import SoftAssert
 
 faker = Faker()
 
@@ -53,18 +53,7 @@ class TestGrade:
 
         get_grade_response = universe_service.get_grade_stats()
 
-        check.equal(get_grade_response.count,
-                    expected_grade.count,
-                    f"Get wrong stats count, AR: {get_grade_response.count}, ER: {expected_grade.count}")
-        check.equal(get_grade_response.min,
-                    expected_grade.min,
-                    f"Get wrong stats min, AR: {get_grade_response.min}, ER: {expected_grade.min}")
-        check.equal(get_grade_response.max,
-                    expected_grade.max,
-                    f"Get wrong stats max, AR: {get_grade_response.max}, ER: {expected_grade.max}")
-        check.equal(get_grade_response.avg,
-                    expected_grade.avg,
-                    f"Get wrong stats avg, AR: {get_grade_response.max}, ER: {expected_grade.avg}")
+        grade_stats_assert(get_grade_response, expected_grade)
 
     def test_get_grade_stats_group(self, universe_service, group_student_teacher_factory, grade_factory):
         group_student_teacher_1 = group_student_teacher_factory()
@@ -79,18 +68,7 @@ class TestGrade:
 
         get_grade_response = universe_service.get_grade_stats(group_id=group_student_teacher_2["group"].id)
 
-        check.equal(get_grade_response.count,
-                    expected_grade.count,
-                    f"Get wrong stats count, AR: {get_grade_response.count}, ER: {expected_grade.count}")
-        check.equal(get_grade_response.min,
-                    expected_grade.min,
-                    f"Get wrong stats min, AR: {get_grade_response.min}, ER: {expected_grade.min}")
-        check.equal(get_grade_response.max,
-                    expected_grade.max,
-                    f"Get wrong stats max, AR: {get_grade_response.max}, ER: {expected_grade.max}")
-        check.equal(get_grade_response.avg,
-                    expected_grade.avg,
-                    f"Get wrong stats avg, AR: {get_grade_response.max}, ER: {expected_grade.avg}")
+        grade_stats_assert(get_grade_response, expected_grade)
 
     def test_get_grade_stats_student(self, universe_service, group_student_teacher_factory, grade_factory):
         group_student_teacher_1 = group_student_teacher_factory()
@@ -105,21 +83,9 @@ class TestGrade:
 
         get_grade_response = universe_service.get_grade_stats(student_id=group_student_teacher_2["student"].id)
 
-        check.equal(get_grade_response.count,
-                    expected_grade.count,
-                    f"Get wrong stats count, AR: {get_grade_response.count}, ER: {expected_grade.count}")
-        check.equal(get_grade_response.min,
-                    expected_grade.min,
-                    f"Get wrong stats min, AR: {get_grade_response.min}, ER: {expected_grade.min}")
-        check.equal(get_grade_response.max,
-                    expected_grade.max,
-                    f"Get wrong stats max, AR: {get_grade_response.max}, ER: {expected_grade.max}")
-        check.equal(get_grade_response.avg,
-                    expected_grade.avg,
-                    f"Get wrong stats avg, AR: {get_grade_response.max}, ER: {expected_grade.avg}")
+        grade_stats_assert(get_grade_response, expected_grade)
 
     def test_get_grade_stats_teacher(self, universe_service, group_student_teacher_factory, grade_factory):
-        soft = SoftAssert()
         group_student_teacher_1 = group_student_teacher_factory()
         group_student_teacher_2 = group_student_teacher_factory()
 
@@ -132,16 +98,4 @@ class TestGrade:
 
         get_grade_response = universe_service.get_grade_stats(teacher_id=group_student_teacher_2["teacher"].id)
 
-        soft.assert_equal(get_grade_response.count,
-                          expected_grade.count,
-                          f"Get wrong stats count, AR: {get_grade_response.count}, ER: {expected_grade.count}")
-        soft.assert_equal(get_grade_response.min,
-                          expected_grade.min,
-                          f"Get wrong stats min, AR: {get_grade_response.min}, ER: {expected_grade.min}")
-        soft.assert_equal(get_grade_response.max,
-                          expected_grade.max,
-                          f"Get wrong stats max, AR: {get_grade_response.max}, ER: {expected_grade.max}")
-        soft.assert_equal(get_grade_response.avg,
-                          expected_grade.avg,
-                          f"Get wrong stats avg, AR: {get_grade_response.max}, ER: {expected_grade.avg}")
-        soft.assert_all()
+        grade_stats_assert(get_grade_response, expected_grade)

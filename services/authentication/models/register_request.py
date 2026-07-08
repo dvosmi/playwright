@@ -1,10 +1,9 @@
 import re
-from enum import StrEnum
 
 from pydantic import BaseModel, ConfigDict, field_validator, model_validator, EmailStr, Field
 
 
-class PasswordEnum:
+class ValidatorConstants:
     PASSWORD_LEN_MIN = 8
     PASSWORD_LEN_MAX = 100
 
@@ -14,8 +13,8 @@ class RegisterRequest(BaseModel):
 
     username: str
     password: str = Field(
-        min_length=PasswordEnum.PASSWORD_LEN_MIN,
-        max_length=PasswordEnum.PASSWORD_LEN_MAX,
+        min_length=ValidatorConstants.PASSWORD_LEN_MIN,
+        max_length=ValidatorConstants.PASSWORD_LEN_MAX,
     )
     password_repeat: str
     email: EmailStr
