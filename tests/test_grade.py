@@ -5,8 +5,8 @@ import pytest_check as check
 from logger.logger import Logger
 from services.general.models.base_grade import GradeEnum
 from services.university.models.grade_request import GradeRequest
-from services.university.models.grade_statistic_query_request import GradeStatisticQueryRequest
 from utils.steps.grade_stats_calculate import grade_stats_calculate
+from utils.soft_assert import SoftAssert
 
 faker = Faker()
 
@@ -77,8 +77,7 @@ class TestGrade:
                                       student_id=group_student_teacher_2["student"].id) for _ in range(count)]
         expected_grade = grade_stats_calculate(multi_grades=multi_grades)
 
-        get_grade_response = universe_service.get_grade_stats(
-            query_params=GradeStatisticQueryRequest(group_id=group_student_teacher_2["group"].id))
+        get_grade_response = universe_service.get_grade_stats(group_id=group_student_teacher_2["group"].id)
 
         check.equal(get_grade_response.count,
                     expected_grade.count,
@@ -104,8 +103,7 @@ class TestGrade:
                                       student_id=group_student_teacher_2["student"].id) for _ in range(count)]
         expected_grade = grade_stats_calculate(multi_grades=multi_grades)
 
-        get_grade_response = universe_service.get_grade_stats(
-            query_params=GradeStatisticQueryRequest(student_id=group_student_teacher_2["student"].id))
+        get_grade_response = universe_service.get_grade_stats(student_id=group_student_teacher_2["student"].id)
 
         check.equal(get_grade_response.count,
                     expected_grade.count,
@@ -121,6 +119,7 @@ class TestGrade:
                     f"Get wrong stats avg, AR: {get_grade_response.max}, ER: {expected_grade.avg}")
 
     def test_get_grade_stats_teacher(self, universe_service, group_student_teacher_factory, grade_factory):
+        soft = SoftAssert()
         group_student_teacher_1 = group_student_teacher_factory()
         group_student_teacher_2 = group_student_teacher_factory()
 
@@ -131,18 +130,18 @@ class TestGrade:
                                       student_id=group_student_teacher_1["student"].id) for _ in range(count)]
         expected_grade = grade_stats_calculate(multi_grades=multi_grades)
 
-        get_grade_response = universe_service.get_grade_stats(
-            query_params=GradeStatisticQueryRequest(teacher_id=group_student_teacher_2["teacher"].id))
+        get_grade_response = universe_service.get_grade_stats(teacher_id=group_student_teacher_2["teacher"].id)
 
-        check.equal(get_grade_response.count,
-                    expected_grade.count,
-                    f"Get wrong stats count, AR: {get_grade_response.count}, ER: {expected_grade.count}")
-        check.equal(get_grade_response.min,
-                    expected_grade.min,
-                    f"Get wrong stats min, AR: {get_grade_response.min}, ER: {expected_grade.min}")
-        check.equal(get_grade_response.max,
-                    expected_grade.max,
-                    f"Get wrong stats max, AR: {get_grade_response.max}, ER: {expected_grade.max}")
-        check.equal(get_grade_response.avg,
-                    expected_grade.avg,
-                    f"Get wrong stats avg, AR: {get_grade_response.max}, ER: {expected_grade.avg}")
+        soft.assert_equal(get_grade_response.count,
+                          expected_grade.count,
+                          f"Get wrong stats count, AR: {get_grade_response.count}, ER: {expected_grade.count}")
+        soft.assert_equal(get_grade_response.min,
+                          expected_grade.min,
+                          f"Get wrong stats min, AR: {get_grade_response.min}, ER: {expected_grade.min}")
+        soft.assert_equal(get_grade_response.max,
+                          expected_grade.max,
+                          f"Get wrong stats max, AR: {get_grade_response.max}, ER: {expected_grade.max}")
+        soft.assert_equal(get_grade_response.avg,
+                          expected_grade.avg,
+                          f"Get wrong stats avg, AR: {get_grade_response.max}, ER: {expected_grade.avg}")
+        soft.assert_all()

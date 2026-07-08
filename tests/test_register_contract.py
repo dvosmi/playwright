@@ -48,7 +48,8 @@ class TestRegisterContract:
     def test_register_wrong_shorter_password(self, auth_api_utils_anonym):
         auth_helper = AuthorizationHelper(api_utils=auth_api_utils_anonym)
 
-        password = faker.password(length=PasswordEnum.PASSWORD_LEN_MIN - 1, special_chars=True, digits=True, upper_case=True,
+        password = faker.password(length=PasswordEnum.PASSWORD_LEN_MIN - 1, special_chars=True, digits=True,
+                                  upper_case=True,
                                   lower_case=True)
 
         response = auth_helper.post_register(data={
@@ -62,7 +63,8 @@ class TestRegisterContract:
     def test_register_wrong_longer_password(self, auth_api_utils_anonym):
         auth_helper = AuthorizationHelper(api_utils=auth_api_utils_anonym)
 
-        password = faker.password(length=PasswordEnum.PASSWORD_LEN_MAX + 1, special_chars=True, digits=True, upper_case=True,
+        password = faker.password(length=PasswordEnum.PASSWORD_LEN_MAX + 1, special_chars=True, digits=True,
+                                  upper_case=True,
                                   lower_case=True)
 
         response = auth_helper.post_register(data={

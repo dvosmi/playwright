@@ -5,7 +5,6 @@ from services.university.helpers.student_helper import StudentHelper
 from services.university.helpers.teacher_helper import TeacherHelper
 from services.university.models.grade_request import GradeRequest
 from services.university.models.grade_response import GradeResponse
-from services.university.models.grade_statistic_query_request import GradeStatisticQueryRequest
 from services.university.models.grade_statistic_response import GradeStatisticResponse
 from services.university.models.group_request import GroupRequest
 from services.university.models.group_response import GroupResponse
@@ -47,7 +46,12 @@ class UniversityService(BaseService):
         response = self.grade_helper.get_grade()
         return [GradeResponse(**item) for item in response.json()]
 
-    def get_grade_stats(self, query_params: GradeStatisticQueryRequest | None = None) -> GradeStatisticResponse:
-        query = query_params.model_dump(exclude_none=True) if query_params else None
+    def get_grade_stats(self, student_id=None, teacher_id=None, group_id=None) -> GradeStatisticResponse:
+        query = {
+            "student_id": student_id,
+            "teacher_id": teacher_id,
+            "group_id": group_id,
+        }
+        query = {key: value for key, value in query.items() if value is not None}
         response = self.grade_helper.get_grade_stats(query=query)
         return GradeStatisticResponse(**response.json())

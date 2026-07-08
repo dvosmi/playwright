@@ -103,7 +103,7 @@ def teacher_response(universe_service):
 @pytest.fixture(scope="function", autouse=False)
 def grade_response(universe_service, student_response, teacher_response):
     Logger.info("### Create grade")
-    grade_value = random.randint(0, 5)
+    grade_value = random.randint(GradeEnum.GRADE_MIN, GradeEnum.GRADE_MAX)
     grade = GradeRequest(teacher_id=teacher_response.id,
                          student_id=student_response.id,
                          grade=grade_value)

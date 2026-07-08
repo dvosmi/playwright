@@ -1,6 +1,6 @@
 from enum import IntEnum
 
-from pydantic import BaseModel, ConfigDict, field_validator
+from pydantic import BaseModel, ConfigDict, field_validator, Field
 
 
 class GradeEnum(IntEnum):
@@ -13,11 +13,7 @@ class BaseGrade(BaseModel):
 
     teacher_id: int
     student_id: int
-    grade: int
-
-    @field_validator("grade")
-    @classmethod
-    def validation_grade(cls, value):
-        if not (GradeEnum.GRADE_MIN <= value <= GradeEnum.GRADE_MAX):
-            raise ValueError(f"Grade must be in range of {GradeEnum.GRADE_MIN} to {GradeEnum.GRADE_MAX}")
-        return value
+    grade: int = Field(
+        ge=GradeEnum.GRADE_MIN,
+        le=GradeEnum.GRADE_MAX,
+    )
