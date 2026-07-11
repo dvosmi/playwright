@@ -1,9 +1,12 @@
 import random
+import time
 
 import pytest
+import requests
 from faker import Faker
 
 from logger.logger import Logger
+from services.authentication.authentication_service import AuthenticationService
 from services.authentication.models.login_request import LoginRequest
 from services.authentication.models.register_request import RegisterRequest
 from services.general.models.base_grade import GradeEnum
@@ -15,9 +18,15 @@ from services.university.models.student_request import StudentRequest
 from services.university.models.teacher_request import TeacherRequest
 from services.university.university_service import UniversityService
 from utils.api_utils import ApiUtils
-from services.authentication.authentication_service import AuthenticationService
+from utils.steps.services_check_readiness import check_service_readiness
 
 faker = Faker()
+
+
+@pytest.fixture(scope="session", autouse=True)
+def services_readiness():
+    check_service_readiness(AuthenticationService)
+    check_service_readiness(UniversityService)
 
 
 @pytest.fixture(scope="function", autouse=False)

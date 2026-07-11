@@ -1,6 +1,6 @@
 from enum import IntEnum
 
-from pydantic import BaseModel, ConfigDict, field_validator, Field
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 
 class GradeEnum(IntEnum):

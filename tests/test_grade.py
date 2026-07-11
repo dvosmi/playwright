@@ -1,6 +1,6 @@
+import pytest_check as check
 from faker import Faker
 from faker.generator import random
-import pytest_check as check
 
 from logger.logger import Logger
 from services.general.models.base_grade import GradeEnum

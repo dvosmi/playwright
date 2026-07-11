@@ -1,6 +1,13 @@
 import re
 
-from pydantic import BaseModel, ConfigDict, field_validator, model_validator, EmailStr, Field
+from pydantic import (
+    BaseModel,
+    ConfigDict,
+    EmailStr,
+    Field,
+    field_validator,
+    model_validator,
+)
 
 
 class ValidatorConstants:
