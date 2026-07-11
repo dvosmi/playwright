@@ -1,5 +1,6 @@
 venv/
 .env
+!docker_compose/.env
 .envrc
 .venv
 env/
