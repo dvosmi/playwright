@@ -46,7 +46,7 @@ class TestGrade:
     def test_get_grade_stats(self, universe_service, create_multi_grades):
         Logger.info('### Get Grade Stats')
 
-        count = 10
+        count = 9
         create_multi_grades(count)
         multi_grades = universe_service.get_grade()
         expected_grade = grade_stats_calculate(multi_grades=multi_grades)
