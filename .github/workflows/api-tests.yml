@@ -41,8 +41,9 @@ jobs:
           sudo ln -s /opt/allure/bin/allure /usr/local/bin/allure
 
       - name: Start docker compose
+        working-directory: docker_compose
         run: |
-          docker compose -f docker_compose/docker-compose.yml up -d
+          docker compose up -d
 
       - name: Run tests
         run: |
@@ -63,8 +64,10 @@ jobs:
 
       - name: Docker logs
         if: failure()
-        run: docker compose -f docker_compose/docker-compose.yml logs
+        working-directory: docker_compose
+        run: docker compose logs
 
       - name: Stop containers
         if: always()
-        run: docker compose -f docker_compose/docker-compose.yml down
+        working-directory: docker_compose
+        run: docker compose down
