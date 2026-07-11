@@ -2,7 +2,7 @@ import requests
 from faker import Faker
 
 from services.authentication.helpers.authorization_helper import AuthorizationHelper
-from services.authentication.models.register_request import PasswordEnum
+from services.authentication.models.register_request import ValidatorConstants
 
 faker = Faker()
 
@@ -48,7 +48,7 @@ class TestRegisterContract:
     def test_register_wrong_shorter_password(self, auth_api_utils_anonym):
         auth_helper = AuthorizationHelper(api_utils=auth_api_utils_anonym)
 
-        password = faker.password(length=PasswordEnum.PASSWORD_LEN_MIN - 1, special_chars=True, digits=True,
+        password = faker.password(length=ValidatorConstants.PASSWORD_LEN_MIN - 1, special_chars=True, digits=True,
                                   upper_case=True,
                                   lower_case=True)
 
@@ -63,7 +63,7 @@ class TestRegisterContract:
     def test_register_wrong_longer_password(self, auth_api_utils_anonym):
         auth_helper = AuthorizationHelper(api_utils=auth_api_utils_anonym)
 
-        password = faker.password(length=PasswordEnum.PASSWORD_LEN_MAX + 1, special_chars=True, digits=True,
+        password = faker.password(length=ValidatorConstants.PASSWORD_LEN_MAX + 1, special_chars=True, digits=True,
                                   upper_case=True,
                                   lower_case=True)
 
