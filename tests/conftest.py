@@ -1,8 +1,6 @@
 import random
-import time
-
 import pytest
-import requests
+
 from faker import Faker
 
 from logger.logger import Logger

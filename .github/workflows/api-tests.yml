@@ -46,8 +46,10 @@ jobs:
           docker compose up -d
 
       - name: Run tests
+        env:
+          PYTHONPATH: ${{ github.workspace }}
         run: |
-          pytest tests --alluredir=allure-results
+          python -m pytest tests --alluredir=allure-results
 
       - name: Generate Allure Report
         if: always()
