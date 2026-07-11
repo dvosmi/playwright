@@ -1,0 +1,6 @@
+[2026-07-11 20:22:53,179 - INFO] - Request: curl -H 'User-Agent: python-requests/2.33.1' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Length: 33' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=chad70&password=resource' http://127.0.0.1:8000/auth/login/
+[2026-07-11 20:22:53,179 - INFO] - Response status code = '401', elapsed_time = '0:00:00.003223'
+{
+  "detail": "Invalid login credentials"
+}
+

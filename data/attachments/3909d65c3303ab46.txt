@@ -1,0 +1,20 @@
+[2026-07-11 20:22:54,191 - INFO] - Request: curl -H 'User-Agent: python-requests/2.33.1' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Length: 68' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=fhampton&password=%26uvJ3BmGjg&password_repeat=%26uvJ3BmGjg' http://127.0.0.1:8000/auth/register/
+[2026-07-11 20:22:54,191 - INFO] - Response status code = '422', elapsed_time = '0:00:00.001924'
+{
+  "detail": [
+    {
+      "type": "missing",
+      "loc": [
+        "body",
+        "email"
+      ],
+      "msg": "Field required",
+      "input": {
+        "username": "fhampton",
+        "password": "&uvJ3BmGjg",
+        "password_repeat": "&uvJ3BmGjg"
+      }
+    }
+  ]
+}
+

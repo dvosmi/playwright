@@ -1,0 +1,22 @@
+[2026-07-11 20:22:53,457 - INFO] - Request: curl -H 'User-Agent: python-requests/2.33.1' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Length: 106' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=seanbender&password=Ec4%26I8R2R_&password_repeat=Ec4%26I8R2R_&email=phillipsandoval%40example.com' http://127.0.0.1:8000/auth/register/
+[2026-07-11 20:22:53,457 - INFO] - Response status code = '201', elapsed_time = '0:00:00.273150'
+{
+  "detail": "User registered"
+}
+
+[2026-07-11 20:22:53,811 - INFO] - Request: curl -H 'User-Agent: python-requests/2.33.1' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Length: 41' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=seanbender&password=Ec4%26I8R2R_' http://127.0.0.1:8000/auth/login/
+[2026-07-11 20:22:53,811 - INFO] - Response status code = '200', elapsed_time = '0:00:00.312862'
+{
+  "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsInVzZXJuYW1lIjoic2VhbmJlbmRlciIsImV4cCI6MTc4MzgwODU3MywiaWF0IjoxNzgzODAxMzczfQ.jFbL-Q2QMhpoUA0QO8WDv6zhGiy0ZuYeMqxd77Sdkcqs9VGsroiPlrT4inQJ7NvSMB1I8ZqwUd2mBI6wTeSDKFBn05O-LZWMvcT0iyX9hWqZ_ARe5n7uy82LKWv5Qb2FDpqzRjZIwTUXd7ZrEQQ_OkGarf_87lQoWD8BuTP1aSb8wKsbGy6G7_NVJFs-d4vFpMs-rodevi7y-Cr5WY6TCsLdwyuNC39TKRZ624fYLgvBdhz3UKlYWz5S44DUWB9wHr6tGFU2e3GqKdRIqhqSCJ7jnPkYM8_rmBuuLFCDTQzmsivAdvE9_la59sYf-Frh9wOyXUc-uKPRD7U7w2gkMg",
+  "token_type": "Bearer"
+}
+
+[2026-07-11 20:22:53,817 - INFO] - Request: curl -H 'User-Agent: python-requests/2.33.1' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsInVzZXJuYW1lIjoic2VhbmJlbmRlciIsImV4cCI6MTc4MzgwODU3MywiaWF0IjoxNzgzODAxMzczfQ.jFbL-Q2QMhpoUA0QO8WDv6zhGiy0ZuYeMqxd77Sdkcqs9VGsroiPlrT4inQJ7NvSMB1I8ZqwUd2mBI6wTeSDKFBn05O-LZWMvcT0iyX9hWqZ_ARe5n7uy82LKWv5Qb2FDpqzRjZIwTUXd7ZrEQQ_OkGarf_87lQoWD8BuTP1aSb8wKsbGy6G7_NVJFs-d4vFpMs-rodevi7y-Cr5WY6TCsLdwyuNC39TKRZ624fYLgvBdhz3UKlYWz5S44DUWB9wHr6tGFU2e3GqKdRIqhqSCJ7jnPkYM8_rmBuuLFCDTQzmsivAdvE9_la59sYf-Frh9wOyXUc-uKPRD7U7w2gkMg' http://127.0.0.1:8000/users/me/
+[2026-07-11 20:22:53,817 - INFO] - Response status code = '200', elapsed_time = '0:00:00.004445'
+{
+  "id": 8,
+  "username": "seanbender",
+  "email": "phillipsandoval@example.com",
+  "is_enabled": true
+}
+
