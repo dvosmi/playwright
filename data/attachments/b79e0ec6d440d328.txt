@@ -1,0 +1,22 @@
+[2026-07-13 21:46:47,883 - INFO] - Request: curl -H 'User-Agent: python-requests/2.33.1' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Length: 96' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=william25&password=ubDpiNAq%408&password_repeat=ubDpiNAq%408&email=cody77%40example.net' http://127.0.0.1:8000/auth/register/
+[2026-07-13 21:46:47,883 - INFO] - Response status code = '201', elapsed_time = '0:00:00.273680'
+{
+  "detail": "User registered"
+}
+
+[2026-07-13 21:46:48,239 - INFO] - Request: curl -H 'User-Agent: python-requests/2.33.1' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Length: 40' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=william25&password=ubDpiNAq%408' http://127.0.0.1:8000/auth/login/
+[2026-07-13 21:46:48,240 - INFO] - Response status code = '200', elapsed_time = '0:00:00.314832'
+{
+  "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsInVzZXJuYW1lIjoid2lsbGlhbTI1IiwiZXhwIjoxNzgzOTg2NDA4LCJpYXQiOjE3ODM5NzkyMDh9.DgkhnXf12a2rLGUeLsXXdJCHA2iRG7PWNTrYTVwHaBHhK7Jk3mT5DVmRjC69yPXewZH3QZaajJZXFAgZI_9LQ019LuZ2Nrn0787-ebwcaIJhBxYYFR5reLkNu71WzBWEw215suiEON51hEsRBhNthiIlnfJ5eOSe7I6hoC95rOh2D24PJm5NTh5sw2Yx94nvVq5Ur6hWTJT7pfKbWMhpNQCNZvDbSpv_DSkcbDEdGu-PgDyJM2AVfimaZUQ6W1nairj898k6zuVSZXrtkrlu_QfO8b9vwby2Ru5d6yLz3DqM5Vqy6ItulXLu2BBrIqXyj-ftguwHuw_VGpnHxaSJXA",
+  "token_type": "Bearer"
+}
+
+[2026-07-13 21:46:48,245 - INFO] - Request: curl -H 'User-Agent: python-requests/2.33.1' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsInVzZXJuYW1lIjoid2lsbGlhbTI1IiwiZXhwIjoxNzgzOTg2NDA4LCJpYXQiOjE3ODM5NzkyMDh9.DgkhnXf12a2rLGUeLsXXdJCHA2iRG7PWNTrYTVwHaBHhK7Jk3mT5DVmRjC69yPXewZH3QZaajJZXFAgZI_9LQ019LuZ2Nrn0787-ebwcaIJhBxYYFR5reLkNu71WzBWEw215suiEON51hEsRBhNthiIlnfJ5eOSe7I6hoC95rOh2D24PJm5NTh5sw2Yx94nvVq5Ur6hWTJT7pfKbWMhpNQCNZvDbSpv_DSkcbDEdGu-PgDyJM2AVfimaZUQ6W1nairj898k6zuVSZXrtkrlu_QfO8b9vwby2Ru5d6yLz3DqM5Vqy6ItulXLu2BBrIqXyj-ftguwHuw_VGpnHxaSJXA' http://127.0.0.1:8000/users/me/
+[2026-07-13 21:46:48,246 - INFO] - Response status code = '200', elapsed_time = '0:00:00.004435'
+{
+  "id": 8,
+  "username": "william25",
+  "email": "cody77@example.net",
+  "is_enabled": true
+}
+

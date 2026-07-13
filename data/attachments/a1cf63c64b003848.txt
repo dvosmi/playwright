@@ -1,0 +1,19 @@
+[2026-07-13 21:46:48,606 - INFO] - Request: curl -H 'User-Agent: python-requests/2.33.1' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Length: 116' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=makaylagriffin&password=%28%24%2Btppkm%29Z&password_repeat=%28%24%2Btppkm%29Z&email=lisablair%40example.com' http://127.0.0.1:8000/auth/register/
+[2026-07-13 21:46:48,606 - INFO] - Response status code = '422', elapsed_time = '0:00:00.002115'
+{
+  "detail": [
+    {
+      "type": "value_error",
+      "loc": [
+        "body",
+        "password"
+      ],
+      "msg": "Value error, Password must contains at least one digit",
+      "input": "($+tppkm)Z",
+      "ctx": {
+        "error": {}
+      }
+    }
+  ]
+}
+
