@@ -1,6 +1,0 @@
-[2026-07-13 21:46:48,573 - INFO] - Request: curl -H 'User-Agent: python-requests/2.33.1' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Length: 102' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=stevenestes&password=6b8EIzxGf%24&password_repeat=6b8EIzxGf%24&email=julieperry%40example.com' http://127.0.0.1:8000/auth/register/
-[2026-07-13 21:46:48,573 - INFO] - Response status code = '201', elapsed_time = '0:00:00.274123'
-{
-  "detail": "User registered"
-}
-
