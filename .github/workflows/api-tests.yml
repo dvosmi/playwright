@@ -40,6 +40,13 @@ jobs:
           sudo mv allure-2.34.1 /opt/allure
           sudo ln -s /opt/allure/bin/allure /usr/local/bin/allure
 
+      - name: Create .env
+        working-directory: docker_compose
+        run: |
+          cat > .env <<EOF
+          ${{ secrets.DOCKER_ENV }}
+          EOF
+
       - name: Start docker compose
         working-directory: docker_compose
         run: |
