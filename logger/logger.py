@@ -19,8 +19,9 @@ class Logger:
     stream_handler = logging.StreamHandler(sys.stdout)
     stream_handler.setFormatter(formatter)
 
-    file_handler = RotatingFileHandler(LoggerConfig.LOGS_FILE_NAME, maxBytes=LoggerConfig.MAX_BYTES,
-                                       backupCount=LoggerConfig.BACKUP_COUNT)
+    file_handler = RotatingFileHandler(
+        LoggerConfig.LOGS_FILE_NAME, maxBytes=LoggerConfig.MAX_BYTES, backupCount=LoggerConfig.BACKUP_COUNT
+    )
     file_handler.setFormatter(formatter)
 
     logger.addHandler(stream_handler)

@@ -10,4 +10,4 @@ class LoggerConfig:
     MAX_BYTES = 100000
     BACKUP_COUNT = 10
     FORMAT = "[%(asctime)s - %(levelname)s] - %(message)s"
-    DATETIME_FORMATE = '%Y-%m-%dT%H:%M:%S'
+    DATETIME_FORMATE = "%Y-%m-%dT%H:%M:%S"

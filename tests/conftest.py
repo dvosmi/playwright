@@ -47,13 +47,13 @@ def access_token(auth_api_utils_anonym):
     username = faker.user_name()
     password = faker.password(length=10, special_chars=True, digits=True, upper_case=True, lower_case=True)
 
-    auth_service.register_user(register_request=RegisterRequest(username=username,
-                                                                password=password,
-                                                                password_repeat=password,
-                                                                email=faker.email()))
+    auth_service.register_user(
+        register_request=RegisterRequest(
+            username=username, password=password, password_repeat=password, email=faker.email()
+        )
+    )
 
-    login_response = auth_service.login_user(login_request=LoginRequest(username=username,
-                                                                        password=password))
+    login_response = auth_service.login_user(login_request=LoginRequest(username=username, password=password))
     return login_response.access_token
 
 
@@ -86,12 +86,14 @@ def group_response(universe_service):
 @pytest.fixture(scope="function", autouse=False)
 def student_response(universe_service, group_response):
     Logger.info("### Create student")
-    student = StudentRequest(first_name=faker.first_name(),
-                             last_name=faker.last_name(),
-                             email=faker.email(),
-                             degree=random.choice([option for option in DegreeEnum]),
-                             phone=faker.numerify("+79#########"),
-                             group_id=group_response.id)
+    student = StudentRequest(
+        first_name=faker.first_name(),
+        last_name=faker.last_name(),
+        email=faker.email(),
+        degree=random.choice([option for option in DegreeEnum]),
+        phone=faker.numerify("+79#########"),
+        group_id=group_response.id,
+    )
 
     student_response = universe_service.create_student(student_request=student)
     return student_response
@@ -100,9 +102,11 @@ def student_response(universe_service, group_response):
 @pytest.fixture(scope="function", autouse=False)
 def teacher_response(universe_service):
     Logger.info("### Create teacher")
-    teacher = TeacherRequest(first_name=faker.first_name(),
-                             last_name=faker.last_name(),
-                             subject=random.choice([option for option in SubjectEnum]))
+    teacher = TeacherRequest(
+        first_name=faker.first_name(),
+        last_name=faker.last_name(),
+        subject=random.choice([option for option in SubjectEnum]),
+    )
     teacher_response = universe_service.create_teacher(teacher_request=teacher)
     return teacher_response
 
@@ -111,9 +115,7 @@ def teacher_response(universe_service):
 def grade_response(universe_service, student_response, teacher_response):
     Logger.info("### Create grade")
     grade_value = random.randint(GradeEnum.GRADE_MIN, GradeEnum.GRADE_MAX)
-    grade = GradeRequest(teacher_id=teacher_response.id,
-                         student_id=student_response.id,
-                         grade=grade_value)
+    grade = GradeRequest(teacher_id=teacher_response.id, student_id=student_response.id, grade=grade_value)
 
     grade_response = universe_service.create_grade(grade_request=grade)
     return grade_response
@@ -133,12 +135,14 @@ def group_factory(universe_service):
 def student_factory(universe_service, group_response):
     def _student_factory(group_id: int):
         Logger.info("### Create student")
-        student = StudentRequest(first_name=faker.first_name(),
-                                 last_name=faker.last_name(),
-                                 email=faker.email(),
-                                 degree=random.choice([option for option in DegreeEnum]),
-                                 phone=faker.numerify("+79#########"),
-                                 group_id=group_id)
+        student = StudentRequest(
+            first_name=faker.first_name(),
+            last_name=faker.last_name(),
+            email=faker.email(),
+            degree=random.choice([option for option in DegreeEnum]),
+            phone=faker.numerify("+79#########"),
+            group_id=group_id,
+        )
         return universe_service.create_student(student_request=student)
 
     return _student_factory
@@ -148,9 +152,11 @@ def student_factory(universe_service, group_response):
 def teacher_factory(universe_service):
     def _teacher_factory():
         Logger.info("### Create teacher")
-        teacher = TeacherRequest(first_name=faker.first_name(),
-                                 last_name=faker.last_name(),
-                                 subject=random.choice([option for option in SubjectEnum]))
+        teacher = TeacherRequest(
+            first_name=faker.first_name(),
+            last_name=faker.last_name(),
+            subject=random.choice([option for option in SubjectEnum]),
+        )
         return universe_service.create_teacher(teacher_request=teacher)
 
     return _teacher_factory
@@ -161,9 +167,7 @@ def grade_factory(universe_service):
     def _grade_factory(teacher_id: int, student_id: int):
         Logger.info("### Create grade")
         grade_value = random.randint(GradeEnum.GRADE_MIN, GradeEnum.GRADE_MAX)
-        grade = GradeRequest(teacher_id=teacher_id,
-                             student_id=student_id,
-                             grade=grade_value)
+        grade = GradeRequest(teacher_id=teacher_id, student_id=student_id, grade=grade_value)
         return universe_service.create_grade(grade_request=grade)
 
     return _grade_factory
@@ -176,9 +180,7 @@ def create_multi_grades(universe_service, teacher_response, student_response):
         for _ in range(count):
             Logger.info("### Create grade")
             grade_value = random.randint(GradeEnum.GRADE_MIN, GradeEnum.GRADE_MAX)
-            grade = GradeRequest(teacher_id=teacher_response.id,
-                                 student_id=student_response.id,
-                                 grade=grade_value)
+            grade = GradeRequest(teacher_id=teacher_response.id, student_id=student_response.id, grade=grade_value)
             multi_grades.append(universe_service.create_grade(grade_request=grade))
         return multi_grades
 
@@ -191,10 +193,6 @@ def group_student_teacher_factory(universe_service, group_factory, student_facto
         teacher = teacher_factory()
         group = group_factory()
         student = student_factory(group_id=group.id)
-        return {
-            "teacher": teacher,
-            "group": group,
-            "student": student
-        }
+        return {"teacher": teacher, "group": group, "student": student}
 
     return _group_student_teacher_factory

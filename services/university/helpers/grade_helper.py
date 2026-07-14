@@ -17,5 +17,5 @@ class GradeHelper(BaseHelper):
         return response
 
     def get_grade_stats(self, query) -> requests.Response:
-        response = self.api_utils.get(self.ROOT_ENDPOINT + 'stats/', params=query)
+        response = self.api_utils.get(self.ROOT_ENDPOINT + "stats/", params=query)
         return response

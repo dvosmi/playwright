@@ -4,9 +4,7 @@ class SoftAssert:
 
     def assert_equal(self, actual, expected, message):
         if actual != expected:
-            self.errors.append(
-                f"{actual!r} != {expected!r}, {message}"
-            )
+            self.errors.append(f"{actual!r} != {expected!r}, {message}")
 
     def assert_all(self):
         if self.errors:

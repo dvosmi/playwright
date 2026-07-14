@@ -18,4 +18,3 @@ class TestMeContract:
         response = user_helper.get_me()
 
         assert response.status_code == 401, f"Wrong status code. AR: '{response.status_code}', ER: '{401}'"
-
