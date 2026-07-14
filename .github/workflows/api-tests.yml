@@ -9,7 +9,33 @@ permissions:
   contents: write
 
 jobs:
-  tests:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Ruff
+        run: |
+          ruff check . 
+          ruff format --check .
+
+  api-tests:
+    name: Api Tests
+    needs: lint
     runs-on: ubuntu-latest
 
     steps:
@@ -63,13 +89,12 @@ jobs:
         run: |
           allure generate allure-results --clean -o allure-report
 
-      - name: Deploy Allure Report
+      - name: Upload Allure Report
         if: always()
-        uses: peaceiris/actions-gh-pages@v4
+        uses: actions/upload-artifact@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: ./allure-report
+          name: allure-report
+          path: allure-report
 
       - name: Docker logs
         if: failure()
@@ -80,3 +105,24 @@ jobs:
         if: always()
         working-directory: docker_compose
         run: docker compose down
+
+  deploy:
+    name: Deploy Allure Report
+    needs: api-tests
+    if: always()
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download Allure Report
+        uses: action/download-artifact@v4
+        with:
+          name: allure-report
+          path: allure-report
+
+      - name: Deploy to GitHub
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./allure-report
+          
