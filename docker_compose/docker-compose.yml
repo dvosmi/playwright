@@ -64,3 +64,24 @@ services:
     depends_on:
       postgres_university:
         condition: service_healthy
+
+  api_tests:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+
+    container_name: api_tests
+
+    working_dir: /app
+
+    volumes:
+      - ..:/app
+
+    environment:
+      PYTHONPATH: /app
+
+    depends_on:
+      auth:
+        condition: service_started
+      university:
+        condition: service_started
