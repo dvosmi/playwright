@@ -65,7 +65,7 @@ services:
       postgres_university:
         condition: service_healthy
 
-  api_tests:
+  api-tests:
     build:
       context: ..
       dockerfile: Dockerfile
