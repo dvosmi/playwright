@@ -10,7 +10,7 @@ def check_service_readiness(service):
         try:
             response = requests.get(service.SERVICE_URL + "/docs")
             response.raise_for_status()
-        except requests.exceptions.HTTPError:
+        except requests.exceptions.ConnectionError:
             time.sleep(1)
         else:
             break
