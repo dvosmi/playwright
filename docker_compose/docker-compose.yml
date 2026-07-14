@@ -79,6 +79,8 @@ services:
 
     environment:
       PYTHONPATH: /app
+      AUTH_SERVICE_INTERNAL_URL: ${AUTH_SERVICE_INTERNAL_URL}
+      UNIVERSITY_SERVICE_INTERNAL_URL: ${UNIVERSITY_SERVICE_INTERNAL_URL}
 
     depends_on:
       auth:

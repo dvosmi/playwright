@@ -1,3 +1,5 @@
+import os
+
 from services.authentication.helpers.authorization_helper import AuthorizationHelper
 from services.authentication.helpers.user_helper import UserHelper
 from services.authentication.models.login_request import LoginRequest
@@ -9,7 +11,10 @@ from utils.api_utils import ApiUtils
 
 
 class AuthenticationService(BaseService):
-    SERVICE_URL = "http://127.0.0.1:8000"
+    SERVICE_URL = os.getenv(
+        "AUTH_SERVICE_INTERNAL_URL",
+        "http://127.0.0.1:8000"
+    )
 
     def __init__(self, api_utils: ApiUtils):
         super().__init__(api_utils)
