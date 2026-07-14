@@ -1,0 +1,25 @@
+[2026-07-14 18:32:02,573 - INFO] - Request: curl -H 'User-Agent: python-requests/2.33.1' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Type: application/x-www-form-urlencoded' http://auth:8000/auth/login/
+[2026-07-14 18:32:02,573 - INFO] - Response status code = '422', elapsed_time = '0:00:00.003035'
+{
+  "detail": [
+    {
+      "type": "missing",
+      "loc": [
+        "body",
+        "username"
+      ],
+      "msg": "Field required",
+      "input": {}
+    },
+    {
+      "type": "missing",
+      "loc": [
+        "body",
+        "password"
+      ],
+      "msg": "Field required",
+      "input": {}
+    }
+  ]
+}
+

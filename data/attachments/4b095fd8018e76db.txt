@@ -1,0 +1,18 @@
+INFO     Logger:logger.py:36 Request: curl -H 'User-Agent: python-requests/2.33.1' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Length: 103' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=sanchezrebekah&password=1BMCmuo2H6&password_repeat=1BMCmuo2H6&email=jillgonzalez%40example.net' http://auth:8000/auth/register/
+INFO     Logger:logger.py:36 Response status code = '422', elapsed_time = '0:00:00.002274'
+{
+  "detail": [
+    {
+      "type": "value_error",
+      "loc": [
+        "body",
+        "password"
+      ],
+      "msg": "Value error, Password must contains at least one special character",
+      "input": "1BMCmuo2H6",
+      "ctx": {
+        "error": {}
+      }
+    }
+  ]
+}

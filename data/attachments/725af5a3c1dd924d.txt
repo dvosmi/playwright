@@ -1,0 +1,130 @@
+INFO     Logger:logger.py:36 Request: curl -H 'User-Agent: python-requests/2.33.1' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Length: 106' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=michael53&password=%5E6oVY5wdNa&password_repeat=%5E6oVY5wdNa&email=michaelfernandez%40example.com' http://auth:8000/auth/register/
+INFO     Logger:logger.py:36 Response status code = '201', elapsed_time = '0:00:00.279276'
+{
+  "detail": "User registered"
+}
+
+INFO     Logger:logger.py:36 Request: curl -H 'User-Agent: python-requests/2.33.1' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Length: 40' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=michael53&password=%5E6oVY5wdNa' http://auth:8000/auth/login/
+INFO     Logger:logger.py:36 Response status code = '200', elapsed_time = '0:00:00.314562'
+{
+  "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJuYW1lIjoibWljaGFlbDUzIiwiZXhwIjoxNzg0MDYxMTE5LCJpYXQiOjE3ODQwNTM5MTl9.B5oNlJZs4cptmvRrtifTzOQuPmUfXbYvmoZoOsRXTqezXodUuPOnFCpsabTEpdArWGtKgoUUzb-Go_uzhwwKKUMsNHY6mK7jgrFTJlXGokXJv1HGdPOB2jNFb5qpAYRmnUkD1X-baJKIZZ_dAzJQ_gsYur_PVfhW0WBhUO01xyZBF9Iz9QmC_igK8GFpV50VmQF6F3i4B4aOtnBZ6AI2pSgrIC3PR2c-yYCGQJ1zsYUW32WPTji-KH4CG2DIdeqrDwlkAyNykO6zFgoMvJjrjFa0SSUFNaZvHlCJVjOYzH5j2uaQy6wevagr-uYMTjuHva5YECGiIlVDZTgPUL8aew",
+  "token_type": "Bearer"
+}
+
+INFO     Logger:logger.py:36 ### Create group
+INFO     Logger:logger.py:36 Request: curl -H 'User-Agent: python-requests/2.33.1' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJuYW1lIjoibWljaGFlbDUzIiwiZXhwIjoxNzg0MDYxMTE5LCJpYXQiOjE3ODQwNTM5MTl9.B5oNlJZs4cptmvRrtifTzOQuPmUfXbYvmoZoOsRXTqezXodUuPOnFCpsabTEpdArWGtKgoUUzb-Go_uzhwwKKUMsNHY6mK7jgrFTJlXGokXJv1HGdPOB2jNFb5qpAYRmnUkD1X-baJKIZZ_dAzJQ_gsYur_PVfhW0WBhUO01xyZBF9Iz9QmC_igK8GFpV50VmQF6F3i4B4aOtnBZ6AI2pSgrIC3PR2c-yYCGQJ1zsYUW32WPTji-KH4CG2DIdeqrDwlkAyNykO6zFgoMvJjrjFa0SSUFNaZvHlCJVjOYzH5j2uaQy6wevagr-uYMTjuHva5YECGiIlVDZTgPUL8aew' -H 'Content-Length: 24' -H 'Content-Type: application/json' -d '{"name": "Andrew Nixon"}' http://university:8000/groups/
+INFO     Logger:logger.py:36 Response status code = '201', elapsed_time = '0:00:00.013345'
+{
+  "name": "Andrew Nixon",
+  "id": 7
+}
+INFO     Logger:logger.py:36 ### Create teacher
+INFO     Logger:logger.py:36 Request: curl -H 'User-Agent: python-requests/2.33.1' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJuYW1lIjoibWljaGFlbDUzIiwiZXhwIjoxNzg0MDYxMTE5LCJpYXQiOjE3ODQwNTM5MTl9.B5oNlJZs4cptmvRrtifTzOQuPmUfXbYvmoZoOsRXTqezXodUuPOnFCpsabTEpdArWGtKgoUUzb-Go_uzhwwKKUMsNHY6mK7jgrFTJlXGokXJv1HGdPOB2jNFb5qpAYRmnUkD1X-baJKIZZ_dAzJQ_gsYur_PVfhW0WBhUO01xyZBF9Iz9QmC_igK8GFpV50VmQF6F3i4B4aOtnBZ6AI2pSgrIC3PR2c-yYCGQJ1zsYUW32WPTji-KH4CG2DIdeqrDwlkAyNykO6zFgoMvJjrjFa0SSUFNaZvHlCJVjOYzH5j2uaQy6wevagr-uYMTjuHva5YECGiIlVDZTgPUL8aew' -H 'Content-Length: 70' -H 'Content-Type: application/json' -d '{"first_name": "Patricia", "last_name": "Allen", "subject": "Physics"}' http://university:8000/teachers/
+INFO     Logger:logger.py:36 Response status code = '201', elapsed_time = '0:00:00.009358'
+{
+  "first_name": "Patricia",
+  "last_name": "Allen",
+  "subject": "Physics",
+  "id": 6
+}
+
+INFO     Logger:logger.py:36 ### Create group
+INFO     Logger:logger.py:36 Request: curl -H 'User-Agent: python-requests/2.33.1' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJuYW1lIjoibWljaGFlbDUzIiwiZXhwIjoxNzg0MDYxMTE5LCJpYXQiOjE3ODQwNTM5MTl9.B5oNlJZs4cptmvRrtifTzOQuPmUfXbYvmoZoOsRXTqezXodUuPOnFCpsabTEpdArWGtKgoUUzb-Go_uzhwwKKUMsNHY6mK7jgrFTJlXGokXJv1HGdPOB2jNFb5qpAYRmnUkD1X-baJKIZZ_dAzJQ_gsYur_PVfhW0WBhUO01xyZBF9Iz9QmC_igK8GFpV50VmQF6F3i4B4aOtnBZ6AI2pSgrIC3PR2c-yYCGQJ1zsYUW32WPTji-KH4CG2DIdeqrDwlkAyNykO6zFgoMvJjrjFa0SSUFNaZvHlCJVjOYzH5j2uaQy6wevagr-uYMTjuHva5YECGiIlVDZTgPUL8aew' -H 'Content-Length: 28' -H 'Content-Type: application/json' -d '{"name": "Kathleen Delgado"}' http://university:8000/groups/
+INFO     Logger:logger.py:36 Response status code = '201', elapsed_time = '0:00:00.010733'
+{
+  "name": "Kathleen Delgado",
+  "id": 8
+}
+
+INFO     Logger:logger.py:36 ### Create student
+INFO     Logger:logger.py:36 Request: curl -H 'User-Agent: python-requests/2.33.1' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJuYW1lIjoibWljaGFlbDUzIiwiZXhwIjoxNzg0MDYxMTE5LCJpYXQiOjE3ODQwNTM5MTl9.B5oNlJZs4cptmvRrtifTzOQuPmUfXbYvmoZoOsRXTqezXodUuPOnFCpsabTEpdArWGtKgoUUzb-Go_uzhwwKKUMsNHY6mK7jgrFTJlXGokXJv1HGdPOB2jNFb5qpAYRmnUkD1X-baJKIZZ_dAzJQ_gsYur_PVfhW0WBhUO01xyZBF9Iz9QmC_igK8GFpV50VmQF6F3i4B4aOtnBZ6AI2pSgrIC3PR2c-yYCGQJ1zsYUW32WPTji-KH4CG2DIdeqrDwlkAyNykO6zFgoMvJjrjFa0SSUFNaZvHlCJVjOYzH5j2uaQy6wevagr-uYMTjuHva5YECGiIlVDZTgPUL8aew' -H 'Content-Length: 142' -H 'Content-Type: application/json' -d '{"first_name": "Ricky", "last_name": "Watts", "email": "kimberly60@example.net", "degree": "Bachelor", "phone": "+79388604360", "group_id": 8}' http://university:8000/students/
+INFO     Logger:logger.py:36 Response status code = '201', elapsed_time = '0:00:00.023940'
+{
+  "first_name": "Ricky",
+  "last_name": "Watts",
+  "email": "kimberly60@example.net",
+  "degree": "Bachelor",
+  "phone": "+79388604360",
+  "group_id": 8,
+  "id": 6
+}
+
+INFO     Logger:logger.py:36 ### Create teacher
+INFO     Logger:logger.py:36 Request: curl -H 'User-Agent: python-requests/2.33.1' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJuYW1lIjoibWljaGFlbDUzIiwiZXhwIjoxNzg0MDYxMTE5LCJpYXQiOjE3ODQwNTM5MTl9.B5oNlJZs4cptmvRrtifTzOQuPmUfXbYvmoZoOsRXTqezXodUuPOnFCpsabTEpdArWGtKgoUUzb-Go_uzhwwKKUMsNHY6mK7jgrFTJlXGokXJv1HGdPOB2jNFb5qpAYRmnUkD1X-baJKIZZ_dAzJQ_gsYur_PVfhW0WBhUO01xyZBF9Iz9QmC_igK8GFpV50VmQF6F3i4B4aOtnBZ6AI2pSgrIC3PR2c-yYCGQJ1zsYUW32WPTji-KH4CG2DIdeqrDwlkAyNykO6zFgoMvJjrjFa0SSUFNaZvHlCJVjOYzH5j2uaQy6wevagr-uYMTjuHva5YECGiIlVDZTgPUL8aew' -H 'Content-Length: 75' -H 'Content-Type: application/json' -d '{"first_name": "Thomas", "last_name": "Williams", "subject": "Mathematics"}' http://university:8000/teachers/
+INFO     Logger:logger.py:36 Response status code = '201', elapsed_time = '0:00:00.087002'
+{
+  "first_name": "Thomas",
+  "last_name": "Williams",
+  "subject": "Mathematics",
+  "id": 7
+}
+
+INFO     Logger:logger.py:36 ### Create group
+INFO     Logger:logger.py:36 Request: curl -H 'User-Agent: python-requests/2.33.1' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJuYW1lIjoibWljaGFlbDUzIiwiZXhwIjoxNzg0MDYxMTE5LCJpYXQiOjE3ODQwNTM5MTl9.B5oNlJZs4cptmvRrtifTzOQuPmUfXbYvmoZoOsRXTqezXodUuPOnFCpsabTEpdArWGtKgoUUzb-Go_uzhwwKKUMsNHY6mK7jgrFTJlXGokXJv1HGdPOB2jNFb5qpAYRmnUkD1X-baJKIZZ_dAzJQ_gsYur_PVfhW0WBhUO01xyZBF9Iz9QmC_igK8GFpV50VmQF6F3i4B4aOtnBZ6AI2pSgrIC3PR2c-yYCGQJ1zsYUW32WPTji-KH4CG2DIdeqrDwlkAyNykO6zFgoMvJjrjFa0SSUFNaZvHlCJVjOYzH5j2uaQy6wevagr-uYMTjuHva5YECGiIlVDZTgPUL8aew' -H 'Content-Length: 26' -H 'Content-Type: application/json' -d '{"name": "James Thornton"}' http://university:8000/groups/
+INFO     Logger:logger.py:36 Response status code = '201', elapsed_time = '0:00:00.011877'
+{
+  "name": "James Thornton",
+  "id": 9
+}
+
+INFO     Logger:logger.py:36 ### Create student
+INFO     Logger:logger.py:36 Request: curl -H 'User-Agent: python-requests/2.33.1' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJuYW1lIjoibWljaGFlbDUzIiwiZXhwIjoxNzg0MDYxMTE5LCJpYXQiOjE3ODQwNTM5MTl9.B5oNlJZs4cptmvRrtifTzOQuPmUfXbYvmoZoOsRXTqezXodUuPOnFCpsabTEpdArWGtKgoUUzb-Go_uzhwwKKUMsNHY6mK7jgrFTJlXGokXJv1HGdPOB2jNFb5qpAYRmnUkD1X-baJKIZZ_dAzJQ_gsYur_PVfhW0WBhUO01xyZBF9Iz9QmC_igK8GFpV50VmQF6F3i4B4aOtnBZ6AI2pSgrIC3PR2c-yYCGQJ1zsYUW32WPTji-KH4CG2DIdeqrDwlkAyNykO6zFgoMvJjrjFa0SSUFNaZvHlCJVjOYzH5j2uaQy6wevagr-uYMTjuHva5YECGiIlVDZTgPUL8aew' -H 'Content-Length: 139' -H 'Content-Type: application/json' -d '{"first_name": "Kelly", "last_name": "Taylor", "email": "ydiaz@example.org", "degree": "Doctorate", "phone": "+79318531263", "group_id": 9}' http://university:8000/students/
+INFO     Logger:logger.py:36 Response status code = '201', elapsed_time = '0:00:00.013753'
+{
+  "first_name": "Kelly",
+  "last_name": "Taylor",
+  "email": "ydiaz@example.org",
+  "degree": "Doctorate",
+  "phone": "+79318531263",
+  "group_id": 9,
+  "id": 7
+}
+
+INFO     Logger:logger.py:36 ### Create grade
+INFO     Logger:logger.py:36 Request: curl -H 'User-Agent: python-requests/2.33.1' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJuYW1lIjoibWljaGFlbDUzIiwiZXhwIjoxNzg0MDYxMTE5LCJpYXQiOjE3ODQwNTM5MTl9.B5oNlJZs4cptmvRrtifTzOQuPmUfXbYvmoZoOsRXTqezXodUuPOnFCpsabTEpdArWGtKgoUUzb-Go_uzhwwKKUMsNHY6mK7jgrFTJlXGokXJv1HGdPOB2jNFb5qpAYRmnUkD1X-baJKIZZ_dAzJQ_gsYur_PVfhW0WBhUO01xyZBF9Iz9QmC_igK8GFpV50VmQF6F3i4B4aOtnBZ6AI2pSgrIC3PR2c-yYCGQJ1zsYUW32WPTji-KH4CG2DIdeqrDwlkAyNykO6zFgoMvJjrjFa0SSUFNaZvHlCJVjOYzH5j2uaQy6wevagr-uYMTjuHva5YECGiIlVDZTgPUL8aew' -H 'Content-Length: 33' -H 'Content-Type: application/x-www-form-urlencoded' -d 'teacher_id=6&student_id=6&grade=0' http://university:8000/grades/
+INFO     Logger:logger.py:36 Response status code = '201', elapsed_time = '0:00:00.012048'
+{
+  "teacher_id": 6,
+  "student_id": 6,
+  "grade": 0,
+  "id": 16
+}
+
+INFO     Logger:logger.py:36 ### Create grade
+INFO     Logger:logger.py:36 Request: curl -H 'User-Agent: python-requests/2.33.1' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJuYW1lIjoibWljaGFlbDUzIiwiZXhwIjoxNzg0MDYxMTE5LCJpYXQiOjE3ODQwNTM5MTl9.B5oNlJZs4cptmvRrtifTzOQuPmUfXbYvmoZoOsRXTqezXodUuPOnFCpsabTEpdArWGtKgoUUzb-Go_uzhwwKKUMsNHY6mK7jgrFTJlXGokXJv1HGdPOB2jNFb5qpAYRmnUkD1X-baJKIZZ_dAzJQ_gsYur_PVfhW0WBhUO01xyZBF9Iz9QmC_igK8GFpV50VmQF6F3i4B4aOtnBZ6AI2pSgrIC3PR2c-yYCGQJ1zsYUW32WPTji-KH4CG2DIdeqrDwlkAyNykO6zFgoMvJjrjFa0SSUFNaZvHlCJVjOYzH5j2uaQy6wevagr-uYMTjuHva5YECGiIlVDZTgPUL8aew' -H 'Content-Length: 33' -H 'Content-Type: application/x-www-form-urlencoded' -d 'teacher_id=6&student_id=7&grade=0' http://university:8000/grades/
+INFO     Logger:logger.py:36 Response status code = '201', elapsed_time = '0:00:00.099438'
+{
+  "teacher_id": 6,
+  "student_id": 7,
+  "grade": 0,
+  "id": 17
+}
+
+INFO     Logger:logger.py:36 ### Create grade
+INFO     Logger:logger.py:36 Request: curl -H 'User-Agent: python-requests/2.33.1' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJuYW1lIjoibWljaGFlbDUzIiwiZXhwIjoxNzg0MDYxMTE5LCJpYXQiOjE3ODQwNTM5MTl9.B5oNlJZs4cptmvRrtifTzOQuPmUfXbYvmoZoOsRXTqezXodUuPOnFCpsabTEpdArWGtKgoUUzb-Go_uzhwwKKUMsNHY6mK7jgrFTJlXGokXJv1HGdPOB2jNFb5qpAYRmnUkD1X-baJKIZZ_dAzJQ_gsYur_PVfhW0WBhUO01xyZBF9Iz9QmC_igK8GFpV50VmQF6F3i4B4aOtnBZ6AI2pSgrIC3PR2c-yYCGQJ1zsYUW32WPTji-KH4CG2DIdeqrDwlkAyNykO6zFgoMvJjrjFa0SSUFNaZvHlCJVjOYzH5j2uaQy6wevagr-uYMTjuHva5YECGiIlVDZTgPUL8aew' -H 'Content-Length: 33' -H 'Content-Type: application/x-www-form-urlencoded' -d 'teacher_id=6&student_id=7&grade=1' http://university:8000/grades/
+INFO     Logger:logger.py:36 Response status code = '201', elapsed_time = '0:00:00.012448'
+{
+  "teacher_id": 6,
+  "student_id": 7,
+  "grade": 1,
+  "id": 18
+}
+
+INFO     Logger:logger.py:36 ### Create grade
+INFO     Logger:logger.py:36 Request: curl -H 'User-Agent: python-requests/2.33.1' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJuYW1lIjoibWljaGFlbDUzIiwiZXhwIjoxNzg0MDYxMTE5LCJpYXQiOjE3ODQwNTM5MTl9.B5oNlJZs4cptmvRrtifTzOQuPmUfXbYvmoZoOsRXTqezXodUuPOnFCpsabTEpdArWGtKgoUUzb-Go_uzhwwKKUMsNHY6mK7jgrFTJlXGokXJv1HGdPOB2jNFb5qpAYRmnUkD1X-baJKIZZ_dAzJQ_gsYur_PVfhW0WBhUO01xyZBF9Iz9QmC_igK8GFpV50VmQF6F3i4B4aOtnBZ6AI2pSgrIC3PR2c-yYCGQJ1zsYUW32WPTji-KH4CG2DIdeqrDwlkAyNykO6zFgoMvJjrjFa0SSUFNaZvHlCJVjOYzH5j2uaQy6wevagr-uYMTjuHva5YECGiIlVDZTgPUL8aew' -H 'Content-Length: 33' -H 'Content-Type: application/x-www-form-urlencoded' -d 'teacher_id=6&student_id=7&grade=5' http://university:8000/grades/
+INFO     Logger:logger.py:36 Response status code = '201', elapsed_time = '0:00:00.010974'
+{
+  "teacher_id": 6,
+  "student_id": 7,
+  "grade": 5,
+  "id": 19
+}
+
+INFO     Logger:logger.py:36 Request: curl -H 'User-Agent: python-requests/2.33.1' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJuYW1lIjoibWljaGFlbDUzIiwiZXhwIjoxNzg0MDYxMTE5LCJpYXQiOjE3ODQwNTM5MTl9.B5oNlJZs4cptmvRrtifTzOQuPmUfXbYvmoZoOsRXTqezXodUuPOnFCpsabTEpdArWGtKgoUUzb-Go_uzhwwKKUMsNHY6mK7jgrFTJlXGokXJv1HGdPOB2jNFb5qpAYRmnUkD1X-baJKIZZ_dAzJQ_gsYur_PVfhW0WBhUO01xyZBF9Iz9QmC_igK8GFpV50VmQF6F3i4B4aOtnBZ6AI2pSgrIC3PR2c-yYCGQJ1zsYUW32WPTji-KH4CG2DIdeqrDwlkAyNykO6zFgoMvJjrjFa0SSUFNaZvHlCJVjOYzH5j2uaQy6wevagr-uYMTjuHva5YECGiIlVDZTgPUL8aew' 'http://university:8000/grades/stats/?student_id=7'
+INFO     Logger:logger.py:36 Response status code = '200', elapsed_time = '0:00:00.009060'
+{
+  "count": 3,
+  "min": 0,
+  "max": 5,
+  "avg": 2.0
+}

@@ -1,0 +1,19 @@
+[2026-07-14 18:32:03,564 - INFO] - Request: curl -H 'User-Agent: python-requests/2.33.1' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Length: 337' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=martinbrian&password=0s6TqO%26G%238Z%24uqcvgn6r61L9ps3FgbXZYXZh%23nAZmaTdm%26SXw5yxj%29ue%29mnx2q30_H%28z7ZgsRuGD4JleVQlR%28cyX%29%263s%23l55cmtX%28&password_repeat=0s6TqO%26G%238Z%24uqcvgn6r61L9ps3FgbXZYXZh%23nAZmaTdm%26SXw5yxj%29ue%29mnx2q30_H%28z7ZgsRuGD4JleVQlR%28cyX%29%263s%23l55cmtX%28&email=ashleystevenson%40example.net' http://auth:8000/auth/register/
+[2026-07-14 18:32:03,564 - INFO] - Response status code = '422', elapsed_time = '0:00:00.002330'
+{
+  "detail": [
+    {
+      "type": "value_error",
+      "loc": [
+        "body",
+        "password"
+      ],
+      "msg": "Value error, Password length should be shorter than 100 characters",
+      "input": "0s6TqO&G#8Z$uqcvgn6r61L9ps3FgbXZYXZh#nAZmaTdm&SXw5yxj)ue)mnx2q30_H(z7ZgsRuGD4JleVQlR(cyX)&3s#l55cmtX(",
+      "ctx": {
+        "error": {}
+      }
+    }
+  ]
+}
+

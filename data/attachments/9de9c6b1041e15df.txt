@@ -1,0 +1,5 @@
+INFO     Logger:logger.py:36 Request: curl -H 'User-Agent: python-requests/2.33.1' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Length: 40' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=robert55&password=international' http://auth:8000/auth/login/
+INFO     Logger:logger.py:36 Response status code = '401', elapsed_time = '0:00:00.004197'
+{
+  "detail": "Invalid login credentials"
+}

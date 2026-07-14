@@ -1,0 +1,30 @@
+INFO     Logger:logger.py:36 Request: curl -H 'User-Agent: python-requests/2.33.1' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Length: 44' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=xnguyen&email=mbryant%40example.com' http://auth:8000/auth/register/
+INFO     Logger:logger.py:36 Response status code = '422', elapsed_time = '0:00:00.002421'
+{
+  "detail": [
+    {
+      "type": "missing",
+      "loc": [
+        "body",
+        "password"
+      ],
+      "msg": "Field required",
+      "input": {
+        "username": "xnguyen",
+        "email": "mbryant@example.com"
+      }
+    },
+    {
+      "type": "missing",
+      "loc": [
+        "body",
+        "password_repeat"
+      ],
+      "msg": "Field required",
+      "input": {
+        "username": "xnguyen",
+        "email": "mbryant@example.com"
+      }
+    }
+  ]
+}

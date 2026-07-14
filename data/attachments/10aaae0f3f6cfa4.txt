@@ -1,0 +1,6 @@
+[2026-07-14 18:32:03,226 - INFO] - Request: curl -H 'User-Agent: python-requests/2.33.1' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' http://auth:8000/users/me/
+[2026-07-14 18:32:03,226 - INFO] - Response status code = '403', elapsed_time = '0:00:00.002243'
+{
+  "detail": "Access denied"
+}
+

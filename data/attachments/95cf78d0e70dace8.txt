@@ -1,0 +1,20 @@
+INFO     Logger:logger.py:36 Request: curl -H 'User-Agent: python-requests/2.33.1' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Length: 115' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=summerswilliam&password=%2A1C%40%2Bww%2BtK&password_repeat=%2A1C%40%2Bww%2BtK&email=nicole32%40example.org' http://auth:8000/auth/register/
+INFO     Logger:logger.py:36 Response status code = '201', elapsed_time = '0:00:00.274828'
+{
+  "detail": "User registered"
+}
+
+INFO     Logger:logger.py:36 Request: curl -H 'User-Agent: python-requests/2.33.1' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Length: 51' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=summerswilliam&password=%2A1C%40%2Bww%2BtK' http://auth:8000/auth/login/
+INFO     Logger:logger.py:36 Response status code = '200', elapsed_time = '0:00:00.311087'
+{
+  "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsInVzZXJuYW1lIjoic3VtbWVyc3dpbGxpYW0iLCJleHAiOjE3ODQwNjExMjMsImlhdCI6MTc4NDA1MzkyM30.OKda70bH4JI8m0c-X0hn9bPCmLe_8UnfQizzdiEJk0bvDak7AxE-TwQjI2Tg8Lda2VIYkUCU6sx86elh7VwBD1vtwHVVWCQYYdrthZRuL3Yq-eiqNQCHs2GCzspRZvCNFMwL_ZM806fvQfrwqwPoqd0ZXaisPChBunNDmaIOIooutfNTUdMmqOpEum3rmEddW_rpvHJvKX2tMIWKzy56UEODxT8pjGS5tt8OZty9H7_RA1Zo7wfRpAKvER9xDjvHL_lF1JGNEqvYmdvsmZGIGJ3tA_b3j8G6jkU8puFHimEmj96PTsmdqeY5cqJWDRCDzsUghE1JczEvoek5l2-u4A",
+  "token_type": "Bearer"
+}
+INFO     Logger:logger.py:36 Request: curl -H 'User-Agent: python-requests/2.33.1' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsInVzZXJuYW1lIjoic3VtbWVyc3dpbGxpYW0iLCJleHAiOjE3ODQwNjExMjMsImlhdCI6MTc4NDA1MzkyM30.OKda70bH4JI8m0c-X0hn9bPCmLe_8UnfQizzdiEJk0bvDak7AxE-TwQjI2Tg8Lda2VIYkUCU6sx86elh7VwBD1vtwHVVWCQYYdrthZRuL3Yq-eiqNQCHs2GCzspRZvCNFMwL_ZM806fvQfrwqwPoqd0ZXaisPChBunNDmaIOIooutfNTUdMmqOpEum3rmEddW_rpvHJvKX2tMIWKzy56UEODxT8pjGS5tt8OZty9H7_RA1Zo7wfRpAKvER9xDjvHL_lF1JGNEqvYmdvsmZGIGJ3tA_b3j8G6jkU8puFHimEmj96PTsmdqeY5cqJWDRCDzsUghE1JczEvoek5l2-u4A' http://auth:8000/users/me/
+INFO     Logger:logger.py:36 Response status code = '200', elapsed_time = '0:00:00.005439'
+{
+  "id": 8,
+  "username": "summerswilliam",
+  "email": "nicole32@example.org",
+  "is_enabled": true
+}

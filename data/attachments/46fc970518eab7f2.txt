@@ -1,0 +1,12 @@
+INFO     Logger:logger.py:36 Request: curl -H 'User-Agent: python-requests/2.33.1' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Length: 114' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=campbellmindy&password=7ne9IUp%2B%5EE&password_repeat=7ne9IUp%2B%5EE&email=johnathanedwards%40example.org' http://auth:8000/auth/register/
+INFO     Logger:logger.py:36 Response status code = '201', elapsed_time = '0:00:00.278374'
+{
+  "detail": "User registered"
+}
+
+INFO     Logger:logger.py:36 Request: curl -H 'User-Agent: python-requests/2.33.1' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Length: 46' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=campbellmindy&password=7ne9IUp%2B%5EE' http://auth:8000/auth/login/
+INFO     Logger:logger.py:36 Response status code = '200', elapsed_time = '0:00:00.311694'
+{
+  "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjcsInVzZXJuYW1lIjoiY2FtcGJlbGxtaW5keSIsImV4cCI6MTc4NDA2MTEyMiwiaWF0IjoxNzg0MDUzOTIyfQ.BJ0-H9ilWoC_Kk9YFE_Mxpm8m7Zpv-AVnxojtTJnVh1A1eRTqr6LiifKYrgE0NkjHpsqTiAkm0WKRV8oOSwZEqZ4HIkmEqOn-o9m0BmDUnwed_4ZrLZtJrFpjEhdFmwIjL8hMDmTihT3Ovlh9NKk6-iNm26qpHA0UrLbTwQkOb-R-A4b88sjvqgQNdUUy-G6gV4cKpyJzjpNtptRKViZfviTf3_eE-D_MBpkGdXqFrSYseEq2gujEIs6CiQh982cziKZVRQEb-FOwZyhBncBfrGGSlw1Lw7Z46Ukh68q9vFWoY0qcNP2YWFSnyKLslQhEDFUSYBAsKyMdQXgIviiIA",
+  "token_type": "Bearer"
+}
