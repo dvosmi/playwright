@@ -1,4 +1,3 @@
-import requests
 
 from utils.api_utils import ApiUtils
 

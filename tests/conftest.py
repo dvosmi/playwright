@@ -1,6 +1,6 @@
 import random
-import pytest
 
+import pytest
 from faker import Faker
 
 from logger.logger import Logger

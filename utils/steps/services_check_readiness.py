@@ -1,4 +1,5 @@
 import time
+
 import requests
 
 
@@ -9,7 +10,7 @@ def check_service_readiness(service):
         try:
             response = requests.get(service.SERVICE_URL + "/docs")
             response.raise_for_status()
-        except:
+        except requests.exceptions.HTTPError:
             time.sleep(1)
         else:
             break
